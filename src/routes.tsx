@@ -1,6 +1,7 @@
 import { RouteObject, createBrowserRouter } from 'react-router-dom';
 import { Login } from './pages/Login';
 import { LoginLayout } from './layouts';
+import { Material } from './pages/Materials';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -8,15 +9,14 @@ const publicRoutes: RouteObject[] = [
     element: <LoginLayout />,
     children: [
       {
-        // trocar dps
-        path: '/a',
-        element: <Login />,
-      },
-      {
         path: '/', 
         element: <Login />,
       },
     ],
+  },
+  {
+    path: '/table', 
+    element: <Material />,
   },
   // {
   //   path: '*',
