@@ -11,7 +11,7 @@ export const Label = ({ htmlFor, className, error, disabled, ...props }: LabelPr
   return (
     <label
       className={cn(
-        'leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-1',
+        'peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
         className,
         error && 'text-negative',
         disabled && 'cursor-not-allowed opacity-70'

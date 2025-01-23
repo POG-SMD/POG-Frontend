@@ -8,7 +8,7 @@ export const FieldRoot = ({ className, error, id, name, disabled, label, childre
   return (
     <div className={cn('flex flex-col w-full gap-1', className)}>
       {label && (
-        <Label error={error} htmlFor={id ?? name} disabled={disabled} className='font-normal text-gray-600'>
+        <Label error={error} htmlFor={id ?? name} disabled={disabled} className='font-normal text-textGray'>
           {label}
         </Label>
       )}

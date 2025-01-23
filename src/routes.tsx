@@ -15,7 +15,7 @@ const publicRoutes: RouteObject[] = [
     ],
   },
   {
-    path: '/table', 
+    path: '/material', 
     element: <Material />,
   },
   // {

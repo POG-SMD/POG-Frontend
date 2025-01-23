@@ -88,7 +88,7 @@ export const Combobox = ({
             role="combobox"
             aria-expanded={open}
             className={cn(
-              "w-full justify-between relative border-black truncate text-black hover:bg-transparent font-normal",
+              "w-full justify-between relative border-textGray truncate text-textColor hover:bg-transparent font-normal",
               className,
               {
                 "border-negative text-negative hover:text-negative":
@@ -142,7 +142,7 @@ export const Combobox = ({
                 {filteredOptions.length === 0 ? (
                   <CommandEmpty>Sem registro.</CommandEmpty>
                 ) : (
-                  <CommandGroup className="text-black">
+                  <CommandGroup className="text-textColor">
                     {filteredOptions.map((option) => (
                       <CommandItem
                         key={option.value}
