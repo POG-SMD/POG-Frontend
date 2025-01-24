@@ -34,7 +34,7 @@ export const Material = () => {
     <div className="w-full bg-slate-500 h-screen flex justify-center items-center">
       {/* <DynamicTable cols={columns} data={mockData} /> */}
 
-      <ReservationForm header={<p>header</p>} optionList={[{label: '', value: ''}]}/>
+      <ReservationForm header={<p className="">Batata</p>} optionList={[{label: '', value: ''}]}/>
     </div>
   )
 }

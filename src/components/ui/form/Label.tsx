@@ -8,10 +8,11 @@ interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 }
 
 export const Label = ({ htmlFor, className, error, disabled, ...props }: LabelProps) => {
+
   return (
     <label
       className={cn(
-        'peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+        'peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-medium',
         className,
         error && 'text-negative',
         disabled && 'cursor-not-allowed opacity-70'
