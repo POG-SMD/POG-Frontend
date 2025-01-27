@@ -1,6 +1,6 @@
 
 export const MainLayout = () => {
   return (
-    <div></div>
+    <div>MainLayout</div>
   )
 }

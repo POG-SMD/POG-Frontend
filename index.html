@@ -1,13 +1,51 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <title>Vite + React + TS</title>
+</head>
+
+<body class="bg-gray-200">
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+
+  <header>
+    <nav class="container p-4 mx-auto flex items-center bg-white">
+      <!--LOGO-->
+      <a href=""><img src="LA CÉLULA EUCARIOTA.jpg" alt="celula eucariota" class="w-20 mx-auto"></a>
+      <!--LINKS-->
+      <ul class="flex items-center space-x-8 pl-8 flex-grow">
+
+        <li><a href="" class="text-lg text-gray-600 hover:text-gray-800">Home</a></li>
+        <li><a href="" class="text-lg  text-gray-600 hover:text-gray-800">Reservas</a></li>
+        <ul class="rounded ">
+          <li><a href="">Espaços</a></li>
+          <li><a href="">Coleta de dados</a></li>
+          <li><a href="">Espaço de reuniões</a></li>
+          <li><a href="">Equipamentos</a></li>
+        </ul>
+        <li><a href="" class="text-lg  text-gray-600 hover:text-gray-800">Materiais e avisos</a>
+        </li>
+        <li><a href="" class="text-lg  text-gray-600 hover:text-gray-800">Administração</a></li>
+        <!--ICON-->
+        <li class="ml-auto"> <a href="" class="text-gray-400 hover:text-gray-800">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 16.5c-.83 0-1.5-.67-1.5-1.5h3c0 .83-.67 1.5-1.5 1.5m5-2.5H7v-1l1-1v-2.61C8 9.27 9.03 7.47 11 7v-.5c0-.57.43-1 1-1s1 .43 1 1V7c1.97.47 3 2.28 3 4.39V14l1 1z" />
+            </svg>
+          </a></li>
+      </ul>
+    </nav>
+  </header>
+</body>
+
 </html>
