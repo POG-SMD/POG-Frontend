@@ -1,4 +1,5 @@
 // import { DynamicTable } from "@/components/common/DynamicTable"
+import { ReservationCalendar } from "@/components/common/Calendar";
 import { useReservationResponseProps } from "@/components/common/ReservationForm/hook/useApi";
 import { ReservationForm } from "@/components/common/ReservationForm/ReservationForm";
 import { useState } from "react";
@@ -44,7 +45,7 @@ export const Material = () => {
   return (
     <div className="w-full bg-slate-500 h-screen flex justify-center items-center">
       {/* <DynamicTable cols={columns} data={mockData} /> */}
-
+      <ReservationCalendar />
       <ReservationForm
         loading={false}
         errorMessage="Erro ao reservar materiais"
