@@ -50,7 +50,7 @@ export const ReservationForm = ({
   return (
     <form
       onSubmit={form.handleSubmit}
-      className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 -mt-6 px-6 border-primary h-fit max-h-[80vh] overflow-auto"
+      className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 px-6 border-primary h-fit max-h-[80vh] overflow-auto"
     >
       <header className="h-14 bg-slate-100 mb-5 flex justify-center items-center rounded-md">
         {header}

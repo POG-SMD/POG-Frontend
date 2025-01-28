@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 export const MainLayout = () => {
   return (
-    <div className="font-sans max-h-screen overflow-hidden">
+    <div className="font-sans max-h-screen overflow-hidden  bg-slate-500">
       <Navbar />
       <main
         className={cn("flex flex-col h-full")}

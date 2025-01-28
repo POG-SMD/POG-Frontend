@@ -12,7 +12,7 @@ import { cn } from "@/libs";
 export const Navbar = () => {
   const location = useLocation();
   return (
-    <header className="shadow-sm shadow-[#00000060]">
+    <header className="bg-secondary shadow-sm shadow-[#00000060]">
       <nav className="w-full px-10 flex h-20">
         <ul className="flex items-center w-full ">
           <img
