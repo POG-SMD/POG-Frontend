@@ -1,19 +1,19 @@
 // import { DynamicTable } from "@/components/common/DynamicTable"
-import { ReservationCalendar } from "@/components/common/Calendar";
-import { useReservationResponseProps } from "@/components/common/ReservationForm/hook/useApi";
-import { ReservationForm } from "@/components/common/ReservationForm/ReservationForm";
-import { useState } from "react";
+// import { ReservationCalendar } from "@/components/common/Calendar";
+// import { useReservationResponseProps } from "@/components/common/ReservationForm/hook/useApi";
+// import { ReservationForm } from "@/components/common/ReservationForm/ReservationForm";
+// import { useState } from "react";
 
 export const Material = () => {
-  const [materialsReservations, setMaterialsReservation] =
-    useState<useReservationResponseProps>({
-      devolutionSchedule: "",
-      hasMaterial: false,
-      materials: [],
-      reservationSchedule: "",
-      usageDate: "",
-      usagePurpose: "",
-    });
+  // const [materialsReservations, setMaterialsReservation] =
+  //   useState<useReservationResponseProps>({
+  //     devolutionSchedule: "",
+  //     hasMaterial: false,
+  //     materials: [],
+  //     reservationSchedule: "",
+  //     usageDate: "",
+  //     usagePurpose: "",
+  //   });
 
   // const columns = [
   //   { title: "Name", className: "font-bold mr-auto" },
@@ -42,18 +42,18 @@ export const Material = () => {
   //   },
   // ];
 
-  return (
-    <div className="w-full bg-slate-500 h-screen flex justify-center items-center">
-      {/* <DynamicTable cols={columns} data={mockData} /> */}
-      <ReservationCalendar />
-      <ReservationForm
-        loading={false}
-        errorMessage="Erro ao reservar materiais"
-        successMessage="Sucesso ao reservar materiais"
-        header={<p className="">Materiais</p>}
-        optionList={[{ label: "", value: "" }]}
-        setState={setMaterialsReservation}
-      />
-    </div>
+  return (<></>
+    // <div className="w-full bg-slate-500 h-screen flex justify-center items-center">
+    //   {/* <DynamicTable cols={columns} data={mockData} /> */}
+    //   <ReservationCalendar />
+    //   <ReservationForm
+    //     loading={false}
+    //     errorMessage="Erro ao reservar materiais"
+    //     successMessage="Sucesso ao reservar materiais"
+    //     header={<p className="">Materiais</p>}
+    //     optionList={[{ label: "", value: "" }]}
+    //     setState={setMaterialsReservation}
+    //   />
+    // </div>
   );
 };
