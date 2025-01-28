@@ -22,9 +22,9 @@ export const ReservationForm = ({
   header: JSX.Element;
   optionList: OptionsList[];
   setState: Dispatch<SetStateAction<useReservationResponseProps>>;
-  successMessage: string
-  errorMessage: string
-  loading: boolean
+  successMessage: string;
+  errorMessage: string;
+  loading: boolean;
 }) => {
   const [hasMaterial, setHasMaterial] = useState<boolean>(false);
   const [materials, setMaterials] = useState<string[]>([]);
@@ -32,28 +32,27 @@ export const ReservationForm = ({
   const form = useFormReservation({
     onSubmit: () => {
       try {
-        if(hasMaterial && materials.length === 0) throw new Error('no materials')
-        
+        if (hasMaterial && materials.length === 0)
+          throw new Error("no materials");
+
         setState({ ...form.values, hasMaterial, materials });
-        if(!loading) toast.success(t(successMessage));
+        if (!loading) toast.success(t(successMessage));
       } catch (e: any) {
-        if(e.message == 'no materials') {
-          toast.error('Selecione no mínimo um material para continuar')
-          return
+        if (e.message == "no materials") {
+          toast.error("Selecione no mínimo um material para continuar");
+          return;
         }
         toast.error(t(errorMessage));
       }
     },
   });
 
-  console.log(form.values.devolutionSchedule);
-  console.log(form.values);
   return (
     <form
       onSubmit={form.handleSubmit}
-      className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-5 px-6 border-primary max-h-[90vh] overflow-auto"
+      className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 -mt-6 px-6 border-primary h-fit max-h-[80vh] overflow-auto"
     >
-      <header className="h-16 bg-slate-100 mb-5 flex justify-center items-center rounded-md">
+      <header className="h-14 bg-slate-100 mb-5 flex justify-center items-center rounded-md">
         {header}
       </header>
 
@@ -98,7 +97,7 @@ export const ReservationForm = ({
             }}
             errorMessage={form.errors.reservationSchedule}
             name="reservationSchedule"
-          disabled={loading}
+            disabled={loading}
           />
           <PatternField
             onChange={(value) => {
@@ -115,7 +114,7 @@ export const ReservationForm = ({
             placeholder="00:00"
             errorMessage={form.errors.devolutionSchedule}
             name="devolutionSchedule"
-          disabled={loading}
+            disabled={loading}
           />
         </fieldset>
 
@@ -128,7 +127,11 @@ export const ReservationForm = ({
           disabled={loading}
         />
 
-        <Button type="submit" disabled={loading} className="px-10 py-6 w-fit mx-auto">
+        <Button
+          type="submit"
+          disabled={loading}
+          className="px-10 py-6 w-fit mx-auto"
+        >
           Solicitar Reserva
         </Button>
       </section>

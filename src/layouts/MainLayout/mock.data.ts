@@ -1,35 +1,35 @@
 export const navbarData = [
   {
-    name: "Nome",
-    link: "",
+    name: "Home",
+    link: "/home",
   },
   {
     name: "Reservas",
-    link: "",
+    link: "/reservation",
   },
   {
     name: "Materiais e avisos",
     dropdown: [
       {
         name: "Espaços",
-        link: "",
+        link: "/space",
       },
       {
         name: "Coleta de dados",
-        link: "",
+        link: "/data",
       },
       {
         name: "Espaços de reuniões",
-        link: "",
+        link: "/reunion",
       },
       {
         name: "Equipamentos",
-        link: "",
+        link: "/equipment",
       },
     ],
   },
   {
-    name: "Adiministração",
-    link: "",
+    name: "Administração",
+    link: "/admin",
   },
 ]

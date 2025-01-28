@@ -6,32 +6,46 @@ import {
 } from "@/components/ui/Dropdown";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { navbarData } from "../mock.data";
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/libs";
 
 export const Navbar = () => {
+  const location = useLocation();
   return (
-    <header>
-      <nav className="w-full px-10 flex">
+    <header className="shadow-sm shadow-[#00000060]">
+      <nav className="w-full px-10 flex h-20">
         <ul className="flex items-center w-full ">
           <img
-            src="LA CÉLULA EUCARIOTA.jpg"
+            src="images\logo.svg"
             alt="celula eucariota"
-            className="w-20"
+            className="w-20 mr-5"
           />
 
           {navbarData.map((item) => (
             <>
               {item.dropdown ? (
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="border-l-2 h-full flex items-center px-5 min-w-10 text-lg text-gray-600 hover:text-gray-800">{item.name}</DropdownMenuTrigger>
-                  <DropdownMenuContent>
+                  <DropdownMenuTrigger className="no-underline border-l-2 h-full flex items-center px-5 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100">
+                    {item.name}
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-secondary">
                     {item.dropdown.map((drop) => (
-                      <DropdownMenuItem>{drop.name}</DropdownMenuItem>
+                      <DropdownMenuItem><Link className="w-full" to={drop.link}>{drop.name}</Link></DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <li className="border-l-2 h-full flex items-center px-5 min-w-10 text-lg text-gray-600 hover:text-gray-800">
-                  {item.name}
+                <li
+                  className={cn(
+                    "border-l-2 h-full flex items-center px-10 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100",
+                    {
+                      "bg-gray-600 text-secondary": location.pathname.includes(
+                        item.link
+                      ),
+                    }
+                  )}
+                >
+                  <Link to={item.link}>{item.name}</Link>
                 </li>
               )}
             </>
