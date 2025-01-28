@@ -177,7 +177,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 2.1</td>
     <td>Front-end</td>
     <td>Criar o formulário que permite ao usuário inserir e-mail e senha para cadastro na plataforma</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Implementar validação de e-mail e senha</td>
@@ -191,14 +191,14 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 2.3</td>
     <td>Front-end</td>
     <td>Implementar mensagens claras e intuitivas para erros comuns, como e-mail inválido ou senha fraca.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Montagem da tela de Cadastro de e-mail e senha para novos usuários.</td>
     <td>Req.F. 2.4</td>
     <td>Front-end</td>
     <td>Implementar tela para cadastramento de novos usuários utilizando e-mail e senha.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Criar endpoints para cadastro de novos usuários.</td>
@@ -256,7 +256,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   </tr>
   
   <tr>
-    <td>Adicionar recuperação de senha via e-mail.</td>
+    <td>Adicionar recuperação de senha via e-mail. ⛔</td>
     <td>Req.F. 3.1</td>
     <td>Front-end</td>
     <td>Implementar forma de recuperar senhas esquecidas via e-mail dos colaboradores.</td>
@@ -267,7 +267,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 3.2</td>
     <td>Front-end</td>
     <td>Implementar tela para login de usuários existentes utilizando e-mail e senha.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Validação de login utilizando e-mail e senha para usuários existentes.</td>
@@ -326,25 +326,25 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
 
   <tr></tr>
   <tr>
-    <th colspan=5><h2>Requisito Macro 05 -> Edição de materiais já existentes</h2></th>
+    <th colspan=5><h2>Requisito Macro 05 -> Edição de materiais já existentes ⛔</h2></th>
   </tr>
   
   <tr>
-    <td>Montagem do modal de edição de material já existente</td>
+    <td>Montagem do modal de edição de material já existente. ⛔</td>
     <td>Req.F. 5.1</td>
     <td>Front-end</td>
     <td>Implementar a montagem do modal de editar material já existente, para que o administrador possa editar um material já existente com uma descrição, tipo de material, nome, quantidade e imagem.</td>
     <td align=center>❌</td>
   </tr>
   <tr>
-    <td>Integração do backend com o modal de edição de material já existente.</td>
+    <td>Integração do backend com o modal de edição de material já existente. ⛔</td>
     <td>Req.F. 5.2</td>
     <td>Front-end</td>
     <td>Implementar a integração do modal de material já existente, para que o administrador possa editar um material com uma descrição, tipo de material, nome, quantidade e imagem de forma 100% funcional.</td>
     <td align=center>❌</td>
   </tr>
   <tr>
-    <td>Validação de formulário do modal de edição de material já existente.</td>
+    <td>Validação de formulário do modal de edição de material já existente. ⛔</td>
     <td>Req.F. 5.3</td>
     <td>Front-end</td>
     <td>Validar o formulário com retornos visuais para o que deverá ser feito pelo administrador para editar de forma correta um material já existente</td>
@@ -367,18 +367,18 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
 
   <tr></tr>
   <tr>
-    <th colspan=5><h2>Requisito Macro 06 -> Vizualização detalhada de material existente</h2></th>
+    <th colspan=5><h2>Requisito Macro 06 -> Vizualização detalhada de material existente ⛔</h2></th>
   </tr>
   
   <tr>
-    <td>Montagem do modal de vizualização de material já existente</td>
+    <td>Montagem do modal de vizualização de material já existente ⛔</td>
     <td>Req.F. 6.1</td>
     <td>Front-end</td>
     <td>Implementar a montagem do modal de vizualização material já existente, para que o usuário possa vizualizar um material já existente com uma descrição, tipo de material, nome, quantidade e imagem.</td>
     <td align=center>❌</td>
   </tr>
   <tr>
-    <td>Integração do backend com o modal de vizualização de material já existente.</td>
+    <td>Integração do backend com o modal de vizualização de material já existente. ⛔</td>
     <td>Req.F. 6.2</td>
     <td>Front-end</td>
     <td>Implementar a integração do modal de vizualização de material já existente, para que o usuário possa vizualizar um material com uma descrição, tipo de material, nome, quantidade e imagem de forma 100% funcional.</td>
@@ -517,25 +517,25 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
 
 <tr></tr>
 <tr>
-  <th colspan=5><h2>Requisito Macro 10 -> Edição de espaços já existentes</h2></th>
+  <th colspan=5><h2>Requisito Macro 10 -> Edição de espaços já existentes ⛔</h2></th>
 </tr>
 
 <tr>
-  <td>Montagem do modal de edição de espaço já existente</td>
+  <td>Montagem do modal de edição de espaço já existente ⛔</td>
   <td>Req.F. 10.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de edição de espaço já existente, para que o administrador possa editar um espaço já existente com uma descrição, tipo de espaço e nome.</td>
   <td align=center>❌</td>
 </tr>
 <tr>
-  <td>Integração do backend com o modal de edição de espaço já existente</td>
+  <td>Integração do backend com o modal de edição de espaço já existente ⛔</td>
   <td>Req.F. 10.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de espaço já existente, para que o administrador possa editar um espaço com uma descrição, tipo de espaço e nome de forma 100% funcional.</td>
   <td align=center>❌</td>
 </tr>
 <tr>
-  <td>Validação de formulário do modal de edição de espaço já existente</td>
+  <td>Validação de formulário do modal de edição de espaço já existente ⛔</td>
   <td>Req.F. 10.3</td>
   <td>Front-end</td>
   <td>Validar o formulário com retornos visuais para o que deverá ser feito pelo administrador para editar de forma correta um espaço já existente.</td>
@@ -560,18 +560,18 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
 
 <tr></tr>
 <tr>
-  <th colspan=5><h2>Requisito Macro 11 -> Visualização detalhada de espaço existente</h2></th>
+  <th colspan=5><h2>Requisito Macro 11 -> Visualização detalhada de espaço existente ⛔</h2></th>
 </tr>
 
 <tr>
-  <td>Montagem do modal de visualização de espaço já existente</td>
+  <td>Montagem do modal de visualização de espaço já existente ⛔</td>
   <td>Req.F. 11.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de visualização de espaço já existente, para que o usuário possa visualizar um espaço já existente com uma descrição, tipo de espaço e nome.</td>
   <td align=center>❌</td>
 </tr>
 <tr>
-  <td>Integração do backend com o modal de visualização de espaço já existente</td>
+  <td>Integração do backend com o modal de visualização de espaço já existente ⛔</td>
   <td>Req.F. 11.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de visualização de espaço já existente, para que o usuário possa visualizar um espaço com uma descrição, tipo de espaço e nome de forma 100% funcional.</td>
@@ -630,25 +630,25 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
 
 <tr></tr>
 <tr>
-  <th colspan=5><h2>Requisito Macro 13 -> Cadastro de novos links</h2></th>
+  <th colspan=5><h2>Requisito Macro 13 -> Cadastro de novos links ⛔</h2></th>
 </tr>
 
 <tr>
-  <td>Montagem do modal de cadastro de novo link</td>
+  <td>Montagem do modal de cadastro de novo link ⛔</td>
   <td>Req.F. 13.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de novo link, para que o administrador possa criar um novo link com uma descrição, nome, URL e tipo.</td>
   <td align=center>❌</td>
 </tr>
 <tr>
-  <td>Integração do backend com o modal de cadastro de novo link</td>
+  <td>Integração do backend com o modal de cadastro de novo link ⛔</td>
   <td>Req.F. 13.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de novo link, para que o administrador possa criar um novo link com uma descrição, nome, URL e tipo. de forma 100% funcional.</td>
   <td align=center>❌</td>
 </tr>
 <tr>
-  <td>Validação de formulário do modal de cadastro de novo link</td>
+  <td>Validação de formulário do modal de cadastro de novo link ⛔</td>
   <td>Req.F. 13.3</td>
   <td>Front-end</td>
   <td>Validar o formulário com retornos visuais para o que deverá ser feito pelo administrador para cadastrar de forma correta um novo link.</td>
@@ -678,25 +678,25 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
 
 <tr></tr>
 <tr>
-  <th colspan=5><h2>Requisito Macro 14 -> Edição de links já existentes</h2></th>
+  <th colspan=5><h2>Requisito Macro 14 -> Edição de links já existentes ⛔</h2></th>
 </tr>
 
 <tr>
-  <td>Montagem do modal de edição de link já existente</td>
+  <td>Montagem do modal de edição de link já existente ⛔</td>
   <td>Req.F. 14.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de edição de link já existente, para que o administrador possa editar um link já existente com uma descrição, nome, URL e tipo..</td>
   <td align=center>❌</td>
 </tr>
 <tr>
-  <td>Integração do backend com o modal de edição de link já existente</td>
+  <td>Integração do backend com o modal de edição de link já existente ⛔</td>
   <td>Req.F. 14.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de link já existente, para que o administrador possa editar um link com uma descrição, nome, URL e tipo. de forma 100% funcional.</td>
   <td align=center>❌</td>
 </tr>
 <tr>
-  <td>Validação de formulário do modal de edição de link já existente</td>
+  <td>Validação de formulário do modal de edição de link já existente ⛔</td>
   <td>Req.F. 14.3</td>
   <td>Front-end</td>
   <td>Validar o formulário com retornos visuais para o que deverá ser feito pelo administrador para editar de forma correta um link já existente.</td>
@@ -719,18 +719,18 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
 
 <tr></tr>
 <tr>
-  <th colspan=5><h2>Requisito Macro 15 -> Visualização detalhada de link existente</h2></th>
+  <th colspan=5><h2>Requisito Macro 15 -> Visualização detalhada de link existente ⛔</h2></th>
 </tr>
 
 <tr>
-  <td>Montagem do modal de visualização de link já existente</td>
+  <td>Montagem do modal de visualização de link já existente ⛔</td>
   <td>Req.F. 15.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de visualização de link já existente, para que o usuário possa visualizar um link já existente com uma descrição, nome, URL e tipo..</td>
   <td align=center>❌</td>
 </tr>
 <tr>
-  <td>Integração do backend com o modal de visualização de link já existente</td>
+  <td>Integração do backend com o modal de visualização de link já existente ⛔</td>
   <td>Req.F. 15.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de visualização de link já existente, para que o usuário possa visualizar um link com uma descrição, nome, URL e tipo. de forma 100% funcional.</td>
