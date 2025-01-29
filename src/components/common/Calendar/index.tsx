@@ -1,5 +1,6 @@
 import { Calendar } from "rsuite";
 import { useState } from "react";
+import { cn } from "@/libs";
 
 function getTodoList(date: Date | null) {
   if (!date) {
@@ -26,7 +27,7 @@ function getTodoList(date: Date | null) {
   }
 }
 
-export const VizualizeCalendar = () => {
+export const VizualizeCalendar = ({ hasDetails = true }: { hasDetails?: boolean }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const handleSelect = (date: Date) => {
@@ -34,27 +35,29 @@ export const VizualizeCalendar = () => {
   };
 
   return (
-    <div className="flex w-full justify-center items-center border-gray-200 h-full">
-      <div className="w-2/3">
+    <div className="w-full flex items-start ">
+      <div className={cn("w-2/3 h-full", {'w-full': !hasDetails})}>
         <Calendar
           onSelect={handleSelect}
           cellClassName={(date) =>
             date.getDay() % 2 ? "bg-gray-100" : undefined
           }
           bordered
-          className="bg-secondary border-2 border-primary rounded-md scale-[90%] w-full"
+          className="bg-secondary border-2 border-primary rounded-md w-full scale-[90%]"
         />
       </div>
 
-      <div className="w-1/3 py-10">
-        {selectedDate ? (
-          <DayDetails date={selectedDate} />
-        ) : (
-          <div className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 h-[78vh] px-6 border-primary text-center overflow-auto">
-            Selecione algum dia
-          </div>
-        )}
-      </div>
+      {hasDetails && (
+        <div className="w-1/3 my-auto ">
+          {selectedDate ? (
+            <DayDetails date={selectedDate} />
+          ) : (
+            <div className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 h-[80vh] px-6 border-primary text-center overflow-auto">
+              Selecione algum dia
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
@@ -64,7 +67,7 @@ const DayDetails = ({ date }: { date: Date | null }) => {
   const list = getTodoList(date);
 
   return (
-    <div className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 h-[78vh] px-6 border-primary overflow-auto">
+    <div className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 h-[80vh] px-6 border-primary text-center overflow-auto">
       {list.length ? (
         <ul>
           {list.map((item) => (

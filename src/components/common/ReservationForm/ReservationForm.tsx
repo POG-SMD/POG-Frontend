@@ -10,6 +10,7 @@ import { useFormReservation } from "./hook/useForm";
 import { useReservationResponseProps } from "./hook/useApi";
 import { t } from "i18next";
 import { toast } from "sonner";
+import { cn } from "@/libs";
 
 export const ReservationForm = ({
   header,
@@ -18,6 +19,7 @@ export const ReservationForm = ({
   successMessage,
   errorMessage,
   loading,
+  className,
 }: {
   header: JSX.Element;
   optionList: OptionsList[];
@@ -25,6 +27,7 @@ export const ReservationForm = ({
   successMessage: string;
   errorMessage: string;
   loading: boolean;
+  className?: string,
 }) => {
   const [hasMaterial, setHasMaterial] = useState<boolean>(false);
   const [materials, setMaterials] = useState<string[]>([]);
@@ -50,7 +53,7 @@ export const ReservationForm = ({
   return (
     <form
       onSubmit={form.handleSubmit}
-      className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 px-6 border-primary h-fit max-h-[80vh] overflow-auto"
+      className={cn("sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-3 px-6 border-primary overflow-auto", className)}
     >
       <header className="h-14 bg-slate-100 mb-5 flex justify-center items-center rounded-md">
         {header}

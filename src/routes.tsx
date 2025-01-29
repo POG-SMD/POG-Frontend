@@ -4,6 +4,8 @@ import { LoginLayout } from './layouts';
 import { Material } from './pages/Materials';
 import { MainLayout } from './layouts/MainLayout';
 import { Home } from './pages/Home';
+import { CollectData } from './pages/CollectData';
+import { Reunion } from './pages/Reunion';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -27,6 +29,14 @@ const publicRoutes: RouteObject[] = [
       {
         path: '/material', 
         element: <Material />,
+      },
+      {
+        path: '/data', 
+        element: <CollectData />,
+      },
+      {
+        path: '/reunion', 
+        element: <Reunion />,
       },
     ],
   },

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,10 +12,11 @@ import { cn } from "@/libs";
 
 export const Navbar = () => {
   const location = useLocation();
+
   return (
     <header className="bg-secondary shadow-sm shadow-[#00000060]">
       <nav className="w-full px-10 flex h-20">
-        <ul className="flex items-center w-full ">
+        <ul className="flex items-center w-full">
           <img
             src="images\logo.svg"
             alt="celula eucariota"
@@ -22,20 +24,36 @@ export const Navbar = () => {
           />
 
           {navbarData.map((item) => (
-            <>
+            <React.Fragment key={item.name}>
               {item.dropdown ? (
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="no-underline border-l-2 h-full flex items-center px-5 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100">
-                    {item.name}
+                  <DropdownMenuTrigger asChild>
+                    <button
+                      className={cn(
+                        "no-underline border-l-2 h-full flex items-center px-5 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100",
+                        {
+                          "bg-gray-600 text-secondary": item.dropdown.some(
+                            (drop) => location.pathname.includes(drop.link)
+                          ),
+                        }
+                      )}
+                    >
+                      {item.name}
+                    </button>
                   </DropdownMenuTrigger>
+
                   <DropdownMenuContent className="bg-secondary">
                     {item.dropdown.map((drop) => (
-                      <DropdownMenuItem><Link className="w-full" to={drop.link}>{drop.name}</Link></DropdownMenuItem>
+                      <Link className="w-full" to={drop.link}>
+                        <DropdownMenuItem key={drop.link}>
+                          {drop.name}
+                        </DropdownMenuItem>
+                      </Link>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <li
+                <Link
                   className={cn(
                     "border-l-2 h-full flex items-center px-10 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100",
                     {
@@ -44,15 +62,16 @@ export const Navbar = () => {
                       ),
                     }
                   )}
+                  to={item.link}
                 >
-                  <Link to={item.link}>{item.name}</Link>
-                </li>
+                  <li>{item.name}</li>
+                </Link>
               )}
-            </>
+            </React.Fragment>
           ))}
 
           <li className="text-lg text-gray-600 hover:text-gray-800 ml-auto">
-            <Icon icon="ion:notifcations" className="w-10 h-10" />
+            <Icon icon="ion:notifications" className="w-10 h-10" />
           </li>
         </ul>
       </nav>
