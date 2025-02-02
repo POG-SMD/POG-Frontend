@@ -1,20 +1,31 @@
 import { VizualizeCalendar } from "@/components/common/Calendar";
 import { ReservationForm } from "@/components/common/ReservationForm/ReservationForm";
+import { mainLayoutContext } from "@/layouts/MainLayout";
+import { useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 
 export const Reunion = () => {
+  const { setHead } = useOutletContext<mainLayoutContext>();
+
+  useEffect(() => {
+    setHead({ title: "Vamos começar escolhendo um dia." });
+  }, []);
+
   return (
-    <div className="w-full bg-slate-500 flex items-start">
-      <div className="w-2/3">
-        <VizualizeCalendar hasDetails={false} />
-      </div>
-      <ReservationForm
-        className="my-auto"
-        loading={false}
-        errorMessage="Erro ao reservar materiais"
-        successMessage="Sucesso ao reservar materiais"
-        header={<p className="">Espaço para reuniões da célula</p>}
-        optionList={[{ label: "", value: "" }]}
-        setState={() => {}}
+    <div>
+      <VizualizeCalendar
+        hasDetails={false}
+        leftContent={
+          <ReservationForm
+            className="my-auto"
+            loading={false}
+            errorMessage="Erro ao reservar materiais"
+            successMessage="Sucesso ao reservar materiais"
+            header={<p className="">Espaço para reuniões da célula</p>}
+            optionList={[{ label: "", value: "" }]}
+            setState={() => {}}
+          />
+        }
       />
     </div>
   );

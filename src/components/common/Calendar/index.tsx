@@ -1,6 +1,7 @@
 import { Calendar } from "rsuite";
 import { useState } from "react";
 import { cn } from "@/libs";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 function getTodoList(date: Date | null) {
   if (!date) {
@@ -27,7 +28,13 @@ function getTodoList(date: Date | null) {
   }
 }
 
-export const VizualizeCalendar = ({ hasDetails = true }: { hasDetails?: boolean }) => {
+export const VizualizeCalendar = ({
+  hasDetails = true,
+  leftContent,
+}: {
+  hasDetails?: boolean;
+  leftContent?: JSX.Element
+}) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const handleSelect = (date: Date) => {
@@ -35,29 +42,58 @@ export const VizualizeCalendar = ({ hasDetails = true }: { hasDetails?: boolean 
   };
 
   return (
-    <div className="w-full flex items-start ">
-      <div className={cn("w-2/3 h-full", {'w-full': !hasDetails})}>
+    <div className="flex flex-col gap-5 lg:gap-0 lg:grid grid-cols-12 2xl:px-0 sm:px-5 px-2 mb-5">
+      <span className="col-span-1 2xl:block hidden" />
+      {leftContent && leftContent}
+      {hasDetails && (
+        <div className="mx-auto w-full lg:col-span-4 2xl:col-span-3">
+          {selectedDate ? (
+            <DayDetails date={selectedDate} />
+          ) : (
+            <div className="flex flex-col gap-10 py-10 bg-secondary h-full border-2 rounded-md px-6 border-primary text-center overflow-auto">
+              <h2 className="text-3xl text-center font-bold">Bem vindo a celulose!</h2>
+              <p className="text-2xl text-center px-10 font-semibold">Aqui nesse site você consegue:</p>
+
+              <ul className="flex flex-col gap-10 px-2">
+                <li className="flex items-center gap-5">
+                  <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
+                    <Icon fontSize={48} className="" icon='streamline:dices-entertainment-gaming-dices' />
+                  </div>
+                  <p className="font-medium text-xl text-start">Agendar os espaços</p>
+                </li>
+                <li className="flex items-center gap-5">
+                  <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
+                    <Icon fontSize={48} className="" icon='grommet-icons:cubes' />
+                  </div>
+                  <p className="font-medium text-xl text-start">Solicitar equipamentos</p>
+                </li>
+                <li className="flex items-center gap-5">
+                  <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
+                    <Icon fontSize={48} className="" icon='mdi:link-variant' />
+                  </div>
+                  <p className="font-medium text-xl text-start">Manejar links</p>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
+      <span className="col-span-1" />
+      <div
+        className={cn("lg:col-span-7 xl:col-span-7 2xl:col-span-6 h-fit", {
+          "w-full": !hasDetails,
+        })}
+      >
         <Calendar
           onSelect={handleSelect}
           cellClassName={(date) =>
             date.getDay() % 2 ? "bg-gray-100" : undefined
           }
           bordered
-          className="bg-secondary border-2 border-primary rounded-md w-full scale-[90%]"
+          className="bg-secondary border-2 border-primary rounded-md w-full"
         />
       </div>
-
-      {hasDetails && (
-        <div className="w-1/3 my-auto ">
-          {selectedDate ? (
-            <DayDetails date={selectedDate} />
-          ) : (
-            <div className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 h-[80vh] px-6 border-primary text-center overflow-auto">
-              Selecione algum dia
-            </div>
-          )}
-        </div>
-      )}
+      <span className="col-span-1 2xl:block hidden" />
     </div>
   );
 };
@@ -67,7 +103,7 @@ const DayDetails = ({ date }: { date: Date | null }) => {
   const list = getTodoList(date);
 
   return (
-    <div className="sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-1 h-[80vh] px-6 border-primary text-center overflow-auto">
+    <div className="w-full h-full bg-secondary border-2 rounded-md py-1 px-6 border-primary text-center overflow-auto">
       {list.length ? (
         <ul>
           {list.map((item) => (

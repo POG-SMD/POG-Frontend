@@ -1,4 +1,3 @@
-import React from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,17 +13,17 @@ export const Navbar = () => {
   const location = useLocation();
 
   return (
-    <header className="bg-secondary shadow-sm shadow-[#00000060]">
+    <header className="bg-secondary shadow-sm shadow-[#00000060] w-full">
       <nav className="w-full px-10 flex h-20">
         <ul className="flex items-center w-full">
           <img
             src="images\logo.svg"
             alt="celula eucariota"
-            className="w-20 mr-5"
+            className="w-16 h-16 mr-5"
           />
 
           {navbarData.map((item) => (
-            <React.Fragment key={item.name}>
+            <div className="h-full hidden lg:block" key={item.name}>
               {item.dropdown ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -67,7 +66,7 @@ export const Navbar = () => {
                   <li>{item.name}</li>
                 </Link>
               )}
-            </React.Fragment>
+            </div>
           ))}
 
           <li className="text-lg text-gray-600 hover:text-gray-800 ml-auto">

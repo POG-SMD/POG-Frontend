@@ -53,7 +53,7 @@ export const ReservationForm = ({
   return (
     <form
       onSubmit={form.handleSubmit}
-      className={cn("sm:min-w-[400px] w-full sm:w-1/4 bg-secondary border-2 rounded-md py-3 px-6 border-primary overflow-auto", className)}
+      className={cn("w-full mx-auto h-full lg:col-span-4 2xl:col-span-3 bg-secondary border-2 rounded-md py-3 px-6 border-primary overflow-auto", className)}
     >
       <header className="h-14 bg-slate-100 mb-5 flex justify-center items-center rounded-md">
         {header}
@@ -133,7 +133,7 @@ export const ReservationForm = ({
         <Button
           type="submit"
           disabled={loading}
-          className="px-10 py-6 w-fit mx-auto"
+          className="px-10 py-6 w-fit mx-auto mt-24"
         >
           Solicitar Reserva
         </Button>
