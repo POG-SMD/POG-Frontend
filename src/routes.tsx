@@ -6,6 +6,7 @@ import { MainLayout } from './layouts/MainLayout';
 import { Home } from './pages/Home';
 import { CollectData } from './pages/CollectData';
 import { Reunion } from './pages/Reunion';
+import { Admin } from './pages/Admin';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -37,6 +38,10 @@ const publicRoutes: RouteObject[] = [
       {
         path: '/reunion', 
         element: <Reunion />,
+      },
+      {
+        path: '/admin', 
+        element: <Admin />,
       },
     ],
   },

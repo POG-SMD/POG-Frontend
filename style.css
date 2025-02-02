@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+  --backgroundColor: #343645;
+  --textColor: #dcdfe1;
+}
+
+.scrollPrimary::-webkit-scrollbar {
+  width: 7px;
+  height: 4px;
+}
+
+.scrollPrimary::-webkit-scrollbar-track {
+  background: var(--backgroundColor);
+}
+
+.scrollPrimary::-webkit-scrollbar-thumb {
+  background: var(--textColor);
+  border-radius: 10px;
+}

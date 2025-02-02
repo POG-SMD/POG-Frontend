@@ -1,6 +1,5 @@
 export * from "./common/PageBuilder";
 export * from "./common/DeleteModal";
-export * from "./common/TableList";
 export * from "./ui/Tooltip";
 export * from "./ui/Button";
 export * from "./ui/Dialog";

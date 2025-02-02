@@ -22,7 +22,7 @@ export const Login = () => {
         .then(res => {
           const responseData = res.data.data
           setToken(responseData.token)
-          navigate('/users')
+          navigate('/home')
           toast.success(t('signIn.toast.success'))
         })
         .catch(() => {
