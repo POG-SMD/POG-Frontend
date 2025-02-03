@@ -184,7 +184,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 2.2</td>
     <td>Front-end</td>
     <td>Garantir que os campos de e-mail e senha atendam aos critérios de validação, como formato correto e segurança mínima exigida.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Adicionar tratamento de erros em validação de novos usuários.</td>
@@ -371,11 +371,11 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   </tr>
   
   <tr>
-    <td>Montagem do modal de vizualização de material já existente ⛔</td>
+    <td>Montagem do modal de vizualização de material já existente</td>
     <td>Req.F. 6.1</td>
     <td>Front-end</td>
     <td>Implementar a montagem do modal de vizualização material já existente, para que o usuário possa vizualizar um material já existente com uma descrição, tipo de material, nome, quantidade e imagem.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Integração do backend com o modal de vizualização de material já existente. ⛔</td>
@@ -409,7 +409,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 7.1</td>
     <td>Front-end</td>
     <td>Implementar a montagem da tela de materiais existentes, para que o usuário possa vizualizar um material já existente com uma descrição, tipo de material, nome, quantidade e imagem.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Integração do backend com a tela de vizualização de material já existente.</td>
@@ -443,7 +443,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 8.1</td>
     <td>Front-end</td>
     <td>Implementar a montagem do modal de reserva, para que o usuário possa reservar um material já existente.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Integração do backend com o modal de reserva de material já existente.</td>
@@ -477,7 +477,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   <td>Req.F. 9.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de novo espaço, para que o administrador possa criar um novo espaço com uma descrição, tipo de espaço e nome.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 <tr>
   <td>Integração do backend com o modal de cadastro de novo espaço</td>
@@ -604,7 +604,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   <td>Req.F. 12.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de reserva, para que o usuário possa reservar um espaço já existente.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 <tr>
   <td>Integração do backend com o modal de reserva de espaço já existente</td>
@@ -761,7 +761,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   <td>Req.F. 16.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de visualização de usuário já existente, para que o administrador possa visualizar um usuário já existente com um nome, email e imagem.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 <tr>
   <td>Integração do backend com o modal de visualização de usuário já existente</td>
