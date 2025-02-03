@@ -10,16 +10,16 @@ import {
 import { mockMaterial } from "./mock";
 import { cn } from "@/libs";
 
-interface CardProps {
-  id: string;
-  title: string;
-  description: string;
-  subCard?: {
-    title: string;
-    description: string;
-    link: string;
-  };
-}
+// interface CardProps {
+//   id: string;
+//   title: string;
+//   description: string;
+//   subCard?: {
+//     title: string;
+//     description: string;
+//     link: string;
+//   };
+// }
 
 export const Material = () => {
   const { setHead } = useOutletContext<mainLayoutContext>();

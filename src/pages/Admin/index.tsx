@@ -16,7 +16,7 @@ export const Admin = () => {
   }));
 
   return (
-    <div className="w-full flex md:flex-row flex-col px-10 gap-10">
+    <div className="w-full flex md:flex-row flex-col px-3 sm:px-10 gap-10">
       <TableAdmin data={mockData} title="Usuários" />
       <TableAdmin data={mockData} title="Projetos" />
     </div>
