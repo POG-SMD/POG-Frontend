@@ -7,6 +7,7 @@ import { Home } from './pages/Home';
 import { CollectData } from './pages/CollectData';
 import { Reunion } from './pages/Reunion';
 import { Admin } from './pages/Admin';
+import { Equipments } from './pages/Equipments';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -42,6 +43,10 @@ const publicRoutes: RouteObject[] = [
       {
         path: '/admin', 
         element: <Admin />,
+      },
+      {
+        path: '/equipment', 
+        element: <Equipments />,
       },
     ],
   },
