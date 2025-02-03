@@ -15,9 +15,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/Sheet";
+import { useAuth } from "@/contexts";
 
 export const Navbar = () => {
   const location = useLocation();
+
+  const { setToken } = useAuth();
 
   return (
     <header className="bg-secondary shadow-sm shadow-[#00000060] w-full fixed top-0 z-[100]">
@@ -106,6 +109,12 @@ export const Navbar = () => {
                       )}
                     </li>
                   ))}
+                  <li
+                    className="h-10 flex items-center px-10 min-w-10 border-b border-gray-400 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100"
+                    onClick={() => setToken(null)}
+                  >
+                    Sair
+                  </li>
                 </ul>
               </SheetContent>
             </Sheet>
@@ -169,6 +178,12 @@ export const Navbar = () => {
               )}
             </div>
           ))}
+          <li
+            className="border-l-2 h-full ml-auto hidden lg:flex items-center w-32 text-lg text-gray-600 hover:text-gray-900 bg-gray-200 hover:bg-gray-300 duration-100"
+            onClick={() => setToken(null)}
+          >
+            <p className="mx-auto">Sair</p>
+          </li>
 
           {/* <li className="text-lg text-gray-600 hover:text-gray-800 ml-auto">
             <Icon icon="ion:notifications" className="w-10 h-10" />

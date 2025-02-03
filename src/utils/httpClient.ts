@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios'
 
 export const httpClient = axios.create({
-  baseURL: import.meta.env.API_URL,
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -13,7 +13,7 @@ httpClient.interceptors.request.use(
     const token = window.localStorage.getItem('auth:token')
 
     if (token !== null) config.headers.Authorization = `Bearer ${token}`
-    config.headers.Origin = import.meta.env.API_URL
+    config.headers.Origin = import.meta.env.VITE_API_URL
 
     return config
   },

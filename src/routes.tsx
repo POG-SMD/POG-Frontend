@@ -8,6 +8,7 @@ import { CollectData } from './pages/CollectData';
 import { Reunion } from './pages/Reunion';
 import { Admin } from './pages/Admin';
 import { Equipments } from './pages/Equipments';
+import { PrivateAuth } from './components/common/PrivateAuth';
 
 const publicRoutes: RouteObject[] = [
   {
@@ -18,8 +19,20 @@ const publicRoutes: RouteObject[] = [
         path: '/', 
         element: <Login />,
       },
+      {
+        path: '/sign-in', 
+        element: <Login />,
+      },
     ],
   },
+  // {
+  //   path: '*',
+  //   element: <NotFound />,
+  // },
+];
+
+const privateRoutes: RouteObject[] = [
+  
   {
     path: '/',
     element: <MainLayout />,
@@ -50,14 +63,14 @@ const publicRoutes: RouteObject[] = [
       },
     ],
   },
-  // {
-  //   path: '*',
-  //   element: <NotFound />,
-  // },
-];
+]
 
 const routesList: RouteObject[] = [
+  {
+    element: <PrivateAuth />,
+    children: privateRoutes,
+  },
   ...publicRoutes,
-];
+]
 
-export const routes = createBrowserRouter(routesList);
+export const routes = createBrowserRouter(routesList)

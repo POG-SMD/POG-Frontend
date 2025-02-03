@@ -16,11 +16,13 @@ export const Login = () => {
     onSubmit: () => {
       signIn
         .makeRequest({
-          login: form.values.email,
           ...form.values,
         })
         .then(res => {
-          const responseData = res.data.data
+          console.log(res.data);
+          
+          const responseData = res.data
+          // @ts-ignore
           setToken(responseData.token)
           navigate('/home')
           toast.success(t('signIn.toast.success'))

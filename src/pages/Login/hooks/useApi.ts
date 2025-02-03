@@ -1,6 +1,7 @@
 
+import { getEndpoint } from '@/endpoints'
 import { useApi } from '@/hooks/useApi'
-import { fakeRequest } from '@/utils/httpClient'
+import { httpClient } from '@/utils/httpClient'
 
 export interface SignInResponse {
   token: string
@@ -8,9 +9,8 @@ export interface SignInResponse {
 }
 
 export const useSignIn = () => {
-  return useApi<SignInResponse>(() => {
-    // const { method, route } = getEndpoint('getPlans')
-    // return httpClient[method](route)
-    return fakeRequest([], 2000)
+  return useApi<SignInResponse>(values => {
+    const { method, route } = getEndpoint('signIn')
+    return httpClient[method](route, { ...values })
   })
 }
