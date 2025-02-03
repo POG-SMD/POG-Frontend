@@ -274,7 +274,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 3.3</td>
     <td>Front-end</td>
     <td>Implementar uma validação de dados como e-mail e senha para login do usuário existente.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
 
   <tr></tr>
