@@ -4,6 +4,14 @@ export const navbarData = [
     link: "/home",
   },
   {
+    name: "Materiais e avisos",
+    link: "material",
+  },
+  {
+    name: "Administração",
+    link: "/admin",
+  },
+  {
     name: "Reservas",
     dropdown: [
       { name: "Equipamentos", link: "/equipment" },
@@ -11,13 +19,5 @@ export const navbarData = [
       { name: "Coleta de dados", link: "/data" },
       { name: "Espaços de reuniões", link: "/reunion" },
     ],
-  },
-  {
-    name: "Materiais e avisos",
-    link: "material",
-  },
-  {
-    name: "Administração",
-    link: "/admin",
   },
 ];

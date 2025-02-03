@@ -20,7 +20,7 @@ export const Navbar = () => {
   const location = useLocation();
 
   return (
-    <header className="bg-secondary shadow-sm shadow-[#00000060] w-full fixed top-0">
+    <header className="bg-secondary shadow-sm shadow-[#00000060] w-full fixed top-0 z-[100]">
       <nav className="w-full px-10 flex h-20">
         <ul className="flex items-center w-full">
           <img
@@ -33,9 +33,9 @@ export const Navbar = () => {
               <SheetTrigger>
                 <Icon icon="uis:bars" fontSize={32} />
               </SheetTrigger>
-              <SheetContent className="w-80">
+              <SheetContent className="w-80 z-[200]">
                 <SheetHeader>
-                  <SheetTitle className="flex justify-start items-center gap-3">
+                  <SheetTitle className="flex justify-start items-center gap-3 mb-10">
                     <img
                       src="images/logo.svg"
                       alt="celula eucariota"
