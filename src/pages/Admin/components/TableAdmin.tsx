@@ -25,7 +25,7 @@ export const TableAdmin = ({
           <TableHead className="w-[100px] text-xl">{title}</TableHead>
         </TableRow>
       </TableHeader>
-      <div className="overflow-auto max-h-[700px] rounded-lg scrollPrimary overflow-x-hidden">
+      <div className="overflow-auto max-h-[60vh] rounded-lg scrollPrimary overflow-x-hidden">
         <TableBody>
           {data.map((item) => (
             <TableRow>

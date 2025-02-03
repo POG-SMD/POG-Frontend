@@ -6,10 +6,10 @@ export const navbarData = [
   {
     name: "Reservas",
     dropdown: [
-      { name: "Espaços", link: "/space" },
+      { name: "Equipamentos", link: "/equipment" },
+      { name: "Espaços" },
       { name: "Coleta de dados", link: "/data" },
       { name: "Espaços de reuniões", link: "/reunion" },
-      { name: "Equipamentos", link: "/equipment" },
     ],
   },
   {

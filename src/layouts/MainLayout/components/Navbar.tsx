@@ -32,7 +32,8 @@ export const Navbar = () => {
                         "no-underline border-l-2 h-full flex items-center px-5 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100",
                         {
                           "bg-gray-600 text-secondary": item.dropdown.some(
-                            (drop) => location.pathname.includes(drop.link)
+                            (drop) =>
+                              drop.link && location.pathname.includes(drop.link)
                           ),
                         }
                       )}
@@ -43,11 +44,21 @@ export const Navbar = () => {
 
                   <DropdownMenuContent className="bg-secondary">
                     {item.dropdown.map((drop) => (
-                      <Link className="w-full" to={drop.link}>
-                        <DropdownMenuItem key={drop.link}>
-                          {drop.name}
-                        </DropdownMenuItem>
-                      </Link>
+                      <>
+                        {drop.link ? (
+                          <Link className="w-full" to={drop.link}>
+                            <DropdownMenuItem key={drop.link}>
+                              {drop.name}
+                            </DropdownMenuItem>
+                          </Link>
+                        ) : (
+                          <div className="font-semibold">
+                            <hr />
+                            <p className="text-center bg-gray-100 py-1">{drop.name}</p>{" "}
+                            <hr />
+                          </div>
+                        )}
+                      </>
                     ))}
                   </DropdownMenuContent>
                 </DropdownMenu>

@@ -1,59 +1,83 @@
-// import { DynamicTable } from "@/components/common/DynamicTable"
-// import { ReservationCalendar } from "@/components/common/Calendar";
-// import { useReservationResponseProps } from "@/components/common/ReservationForm/hook/useApi";
-// import { ReservationForm } from "@/components/common/ReservationForm/ReservationForm";
-// import { useState } from "react";
+import { mainLayoutContext } from "@/layouts/MainLayout";
+import { useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/Acordion";
+import { mockMaterial } from "./mock";
+import { cn } from "@/libs";
+
+interface CardProps {
+  id: string;
+  title: string;
+  description: string;
+  subCard?: {
+    title: string;
+    description: string;
+    link: string;
+  };
+}
 
 export const Material = () => {
-  // const [materialsReservations, setMaterialsReservation] =
-  //   useState<useReservationResponseProps>({
-  //     devolutionSchedule: "",
-  //     hasMaterial: false,
-  //     materials: [],
-  //     reservationSchedule: "",
-  //     usageDate: "",
-  //     usagePurpose: "",
-  //   });
+  const { setHead } = useOutletContext<mainLayoutContext>();
 
-  // const columns = [
-  //   { title: "Name", className: "font-bold mr-auto" },
-  //   { title: "Email", className: "mx-auto" },
-  //   { title: "Actions", className: "ml-auto" },
-  // ];
+  useEffect(() => {
+    setHead({ title: "Vizualize os materiais e avisos" });
+  }, []);
 
-  // const mockData = [
-  //   {
-  //     cells: {
-  //       Name: "John Doe",
-  //       Email: "john.doe@example.com",
-  //       Actions: <button className="text-blue-500">Edit</button>,
-  //     },
-  //     onClick: () => console.log("Clicked on John Doe"),
-  //     className: "hover:bg-slate-200",
-  //   },
-  //   {
-  //     cells: {
-  //       Name: "Jane Smith",
-  //       Email: "jane.smith@example.com",
-  //       Actions: <button className="text-blue-500">Edit</button>,
-  //     },
-  //     onClick: () => console.log("Clicked on Jane Smith"),
-  //     className: "hover:bg-slate-200",
-  //   },
-  // ];
-
-  return (<></>
-    // <div className="w-full bg-slate-500 h-screen flex justify-center items-center">
-    //   {/* <DynamicTable cols={columns} data={mockData} /> */}
-    //   <ReservationCalendar />
-    //   <ReservationForm
-    //     loading={false}
-    //     errorMessage="Erro ao reservar materiais"
-    //     successMessage="Sucesso ao reservar materiais"
-    //     header={<p className="">Materiais</p>}
-    //     optionList={[{ label: "", value: "" }]}
-    //     setState={setMaterialsReservation}
-    //   />
-    // </div>
+  return (
+    <Accordion
+      className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 sm:gap-10 gap-4 px-2 sm:px-10 mb-10"
+      type="single"
+      collapsible
+    >
+      {mockMaterial.map((material) => (
+        <AccordionItem
+          className={cn(
+            "w-full bg-secondary min-h-[308.5px] rounded-lg border-2 border-primary h-fit overflow-hidden"
+          )}
+          value={material.id}
+        >
+          <h4 className="px-2 text-2xl my-4 text-center font-bold">
+            {material.title}
+          </h4>
+          <h5 className="px-2 text-xl font-semibold">Descrição do projeto:</h5>
+          <p
+            className={cn("px-2 text-lg my-3 max-h-28 overflow-auto", {
+              "max-h-40": !material.subCard,
+            })}
+          >
+            {material.description}
+          </p>
+          {material.subCard && (
+            <>
+              <AccordionTrigger className="flex justify-center mt-5 bg-gray-200 "></AccordionTrigger>
+              <AccordionContent className="bg-gray-200 p-6 pt-0 flex flex-col gap-3 max-h-64 xl:max-h-96 overflow-y-auto">
+                {material.subCard.map((card) => (
+                  <article className="bg-secondary p-2 border border-primary rounded-lg">
+                    <div className="flex flex-wrap justify-between items-center mb-8">
+                      <h4 className="px-2 text-xl font-bold">
+                        {card.title}
+                      </h4>
+                      <a href={card.link} className="text-lg" target="_blank" rel="noopener">
+                        {card.link}
+                      </a>
+                    </div>
+                    <p
+                      className={cn("px-2 my-3 max-h-28 overflow-auto")}
+                    >
+                      {card.descripition}
+                    </p>
+                  </article>
+                ))}
+              </AccordionContent>
+            </>
+          )}
+        </AccordionItem>
+      ))}
+    </Accordion>
   );
 };

@@ -16,7 +16,7 @@ export const useFormReservation = ({ onSubmit }: useFormReservationProps) => {
       is: true,
       then: (schema) =>
         schema
-          .min(1, t("global.validation.minOneMaterial"))
+          .min(1, t("Selecione ao menos 1 material!"))
           .required(t("global.validation.required")),
       otherwise: (schema) => schema.notRequired(),
     }),
@@ -24,10 +24,10 @@ export const useFormReservation = ({ onSubmit }: useFormReservationProps) => {
     usagePurpose: Yup.string().required(t("global.validation.required")),
     reservationSchedule: Yup.string()
       .required(t("global.validation.required"))
-      .matches(timeRegex, t("global.validation.invalidTime")),
+      .matches(timeRegex, t("Horário inválido!")),
     devolutionSchedule: Yup.string()
       .required(t("global.validation.required"))
-      .matches(timeRegex, t("global.validation.invalidTime")),
+      .matches(timeRegex, t("Horário inválido!")),
   });
 
   const initialValues = {
