@@ -7,15 +7,13 @@ import {
   TableRow,
 } from "@/components/ui/Table";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { UserType } from "../hooks/useApi";
 
 export const TableAdmin = ({
   data,
   title,
 }: {
-  data: {
-    id: string;
-    name: string;
-  }[];
+  data: UserType[] | { id: string; name: string }[];
   title: string;
 }) => {
   return (
