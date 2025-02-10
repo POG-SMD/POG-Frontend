@@ -3,13 +3,13 @@ import { useApi } from "@/hooks/useApi";
 import { httpClient } from "@/utils/httpClient";
 
 export interface UserType {
-  id: string | number
-  email: string
-  password: string
-  name: string
-  role: string
-  createdAt: string
-  updatedAt: string
+  id: string | number;
+  email: string;
+  password: string;
+  name: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export const useGetUsers = () => {
@@ -20,9 +20,9 @@ export const useGetUsers = () => {
 };
 
 export const useGetUser = () => {
-  return useApi<UserType>((values) => {
-    const { method, route } = getEndpoint("getUser");
-    return httpClient[method](route, { ...values });
+  return useApi<UserType>((id) => {
+    const { method, route } = getEndpoint("getUser", { ...id });
+    return httpClient[method](route);
   });
 };
 

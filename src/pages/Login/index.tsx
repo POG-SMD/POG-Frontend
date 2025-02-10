@@ -36,7 +36,7 @@ export const Login = () => {
 
 
   return (
-    <form onSubmit={form.handleSubmit} className="flex flex-col gap-10 w-96 m-auto">
+    <form onSubmit={form.handleSubmit} className="flex flex-col gap-10 w-full sm:px-0 px-10 sm:w-96 m-auto">
       <h1 className="text-3xl">LOGO</h1>
       <TextField
         name="email"

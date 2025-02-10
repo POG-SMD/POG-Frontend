@@ -21,11 +21,10 @@ export const getEndpoint = (
 ) => {
   const endpoint = endpoints.find((row) => row.name === routeName);
   if (!endpoint) throw new Error(`Invalid endpoint name '${routeName}'.`);
+  let route = endpoint.route;
   for (const paramName in routeParams) {
-    endpoint.route = endpoint.route.replace(
-      `{${paramName}}`,
-      routeParams[paramName]
-    );
+    route = route.replace(`{${paramName}}`, routeParams[paramName]);
   }
-  return endpoint;
+
+  return { ...endpoint, route };
 };

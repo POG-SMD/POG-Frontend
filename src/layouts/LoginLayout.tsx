@@ -11,7 +11,7 @@ export const LoginLayout = () => {
           "flex-row-reverse": location.pathname.includes("register"),
         })}
       >
-        <section className="w-2/3 bg-gray-500 flex justify-center items-center">
+        <section className="w-2/3 bg-gray-500 sm:flex hidden justify-center items-center">
           <img src='' alt="" className="w-2/3 bg-gray-500" />
         </section>
         <Outlet />
