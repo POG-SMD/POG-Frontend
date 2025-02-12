@@ -1,5 +1,6 @@
 import { getEndpoint } from "@/endpoints";
 import { useApi } from "@/hooks/useApi";
+import { RoleType } from "@/types/roleType";
 import { httpClient } from "@/utils/httpClient";
 
 export interface UserType {
@@ -7,7 +8,7 @@ export interface UserType {
   email: string;
   password: string;
   name: string;
-  role: string;
+  role: RoleType;
   createdAt: string;
   updatedAt: string;
 }
