@@ -27,9 +27,9 @@ export const useGetUser = () => {
 };
 
 export const useDeleteUser = () => {
-  return useApi<UserType>((values) => {
-    const { method, route } = getEndpoint("deleteUser");
-    return httpClient[method](route, { ...values });
+  return useApi((id) => {
+    const { method, route } = getEndpoint("deleteUser", { ...id });
+    return httpClient[method](route);
   });
 };
 

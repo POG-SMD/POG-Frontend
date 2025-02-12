@@ -41,13 +41,15 @@ export const Admin = () => {
           setOpenCreate={setOpenCreateUser}
           data={getUsers?.data}
           title="Usuários"
-        />
+          refresh={() => getUsers.makeRequest()}
+          />
         <TableAdmin
           setId={setId}
           setOpen={setOpenProject}
           setOpenCreate={setOpenCreateProject}
           data={mockData}
           title="Projetos"
+          refresh={() => getUsers.makeRequest()}
         />
       </div>
     </>
