@@ -9,6 +9,7 @@ import {
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { UserType } from "../hooks/useApi";
 import { Dispatch, SetStateAction } from "react";
+import { Button, Popover, PopoverContent, PopoverTrigger } from "@/components";
 
 export const TableAdmin = ({
   data,
@@ -21,9 +22,8 @@ export const TableAdmin = ({
   title: string;
   setId: Dispatch<SetStateAction<string | number>>;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  setOpenCreate: Dispatch<SetStateAction<boolean>>,
+  setOpenCreate: Dispatch<SetStateAction<boolean>>;
 }) => {
-
   return (
     <Table className="bg-secondary rounded-lg relative shadow shadow-[#00000060] w-full overflow-hidden">
       <Icon
@@ -50,7 +50,17 @@ export const TableAdmin = ({
           >
             <TableCell className="w-full font-medium">{item.name}</TableCell>
             <TableCell className="w-fit">
-              <Icon icon="tabler:dots" fontSize={20} />
+              <Popover>
+                <PopoverTrigger className="h-6 cursor-pointer text-primary/70" onClick={e => e.stopPropagation()}>
+                  <Icon icon="tabler:dots" className="h-5" fontSize={20} />
+                </PopoverTrigger>
+
+                <PopoverContent className="w-fit">
+                  <Button variant='destructive' className="w-full px-10">
+                    Remover
+                  </Button>
+                </PopoverContent>
+              </Popover>
             </TableCell>
           </TableRow>
         ))}

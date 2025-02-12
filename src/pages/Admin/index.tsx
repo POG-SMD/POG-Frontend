@@ -5,6 +5,7 @@ import { TableAdmin } from "./components/TableAdmin";
 import { useGetUsers } from "./hooks/useApi";
 import { UserDetails } from "./components/UserDetails";
 import { UserCreateModal } from "./components/UserCreateModal";
+import { Loading } from "@/components/common/Loading";
 
 export const Admin = () => {
   const { setHead } = useOutletContext<mainLayoutContext>();
@@ -27,7 +28,7 @@ export const Admin = () => {
     name: `Projeto ${i + 1}`,
   }));
 
-  if (!getUsers?.data) return <>loading...</>;
+  if (!getUsers?.data) return <div className="w-full h-[50vh] flex justify-center items-center"><Loading size='xl' /></div>;
 
   return (
     <>
