@@ -15,14 +15,23 @@ export const TableAdmin = ({
   title,
   setId,
   setOpen,
+  setOpenCreate,
 }: {
   data: UserType[] | { id: string; name: string }[];
   title: string;
   setId: Dispatch<SetStateAction<string | number>>;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  setOpenCreate: Dispatch<SetStateAction<boolean>>,
 }) => {
+
   return (
-    <Table className="bg-secondary rounded-lg shadow shadow-[#00000060] w-full overflow-hidden">
+    <Table className="bg-secondary rounded-lg relative shadow shadow-[#00000060] w-full overflow-hidden">
+      <Icon
+        icon="lucide:plus"
+        onClick={() => setOpenCreate(true)}
+        className="absolute right-2.5 hover:text-primary/60 cursor-pointer duration-150 top-2.5 z-50"
+        fontSize={20}
+      />
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px] text-xl">{title}</TableHead>

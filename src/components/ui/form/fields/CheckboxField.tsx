@@ -1,6 +1,7 @@
 import { cn } from "@/libs";
 import { Checkbox } from "../Checkbox";
 import { Label } from "../Label";
+import { CheckedState } from "@radix-ui/react-checkbox";
 
 export function CheckboxField({
   label,
@@ -10,7 +11,7 @@ export function CheckboxField({
   onCheckedChange,
   disabled
 }: {
-  onCheckedChange?: () => void;
+  onCheckedChange?: (checked: CheckedState) => void;
   label?: string;
   checked?: boolean;
   paragraph?: string;

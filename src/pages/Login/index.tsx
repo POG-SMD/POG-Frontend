@@ -19,7 +19,6 @@ export const Login = () => {
           ...form.values,
         })
         .then(res => {
-          console.log(res.data);
           
           const responseData = res.data
           // @ts-ignore
@@ -66,11 +65,6 @@ export const Login = () => {
         className="mt-6"
         type="submit"
         disabled={signIn.loading}
-        onClick={() => {
-          console.log(form.values);
-          console.log(form.errors);
-          
-        }}
       >
         Entrar
       </Button>
