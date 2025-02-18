@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import {
   Table,
   TableHeader,
@@ -8,6 +8,8 @@ import {
   TableCell,
 } from "../ui/Table";
 import { cn } from "@/libs";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { Button } from "../ui/Button";
 
 export type DynamicTable = {
   cols: {
@@ -22,6 +24,7 @@ export type DynamicTable = {
     className?: string;
   }>;
   loading?: boolean;
+  setOpenCreate?: Dispatch<SetStateAction<boolean>>,
 };
 
 export const DynamicTable = ({
@@ -30,6 +33,7 @@ export const DynamicTable = ({
   loading,
   className,
   title,
+  setOpenCreate,
 }: DynamicTable) => {
   return (
     <Table
@@ -39,7 +43,12 @@ export const DynamicTable = ({
       )}
     >
       <TableHeader className="block w-full bg-[#EEF1F4A6] border-y border-[#BDC6D4]">
-        <h2 className="text-2xl my-2 pl-3 font-bold">{title}</h2>
+        <div className="flex justify-between items-center px-3">
+          <h2 className="text-2xl my-2 font-bold">{title}</h2>
+          <Button onClick={() => setOpenCreate && setOpenCreate(true)}>
+            <Icon fontSize={20} icon='tabler:plus'/>
+          </Button>
+        </div>
         <TableRow className="flex px-3 h-fit py-1">
           {cols.map((col, index) => (
             <TableHead

@@ -12,6 +12,8 @@ const endpoints: endpointsType[] = [
   { name: "editUser", route: "/api/v1/login/{id}", method: "put" },
   { name: "createUser", route: "/api/v1/login/register", method: "post" },
 
+  { name: "createMaterial", route: "/api/v1/material/create", method: "post" },
+
   { name: "getProjects", route: "/api/v1/login/all", method: "get" },
 ];
 
