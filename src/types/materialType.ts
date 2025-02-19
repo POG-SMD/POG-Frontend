@@ -6,7 +6,7 @@ export enum MaterialType {
   NOT_RELEVANT = '3',
 }
 
-export const getRoleText = (status: MaterialType): string => {
+export const getMaterialType = (status: MaterialType): string => {
   const texts: Record<MaterialType, string> = {
     [MaterialType.IMPORTANT]: "Importante",
     [MaterialType.RELEVANT]: "Relevante",
@@ -18,14 +18,14 @@ export const getRoleText = (status: MaterialType): string => {
 export const getMaterialOptions = (): OptionsList[] => [
   {
     value: MaterialType.IMPORTANT,
-    label: getRoleText(MaterialType.IMPORTANT),
+    label: getMaterialType(MaterialType.IMPORTANT),
   },
   {
     value: MaterialType.RELEVANT,
-    label: getRoleText(MaterialType.RELEVANT),
+    label: getMaterialType(MaterialType.RELEVANT),
   },
   {
     value: MaterialType.NOT_RELEVANT,
-    label: getRoleText(MaterialType.NOT_RELEVANT),
+    label: getMaterialType(MaterialType.NOT_RELEVANT),
   },
 ]

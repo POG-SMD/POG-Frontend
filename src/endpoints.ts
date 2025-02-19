@@ -13,6 +13,7 @@ const endpoints: endpointsType[] = [
   { name: "createUser", route: "/api/v1/login/register", method: "post" },
 
   { name: "createMaterial", route: "/api/v1/material/create", method: "post" },
+  { name: "getMaterials", route: "/api/v1/material/all", method: "get" },
 
   { name: "getProjects", route: "/api/v1/login/all", method: "get" },
 ];

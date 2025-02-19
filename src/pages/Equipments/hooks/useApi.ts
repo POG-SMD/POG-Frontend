@@ -19,3 +19,10 @@ export const useCreateMaterial = () => {
     return httpClient[method](route, { ...values });
   });
 };
+
+export const useGetMaterials = () => {
+  return useApi<MaterialType[]>(() => {
+    const { method, route } = getEndpoint("getMaterials");
+    return httpClient[method](route);
+  });
+};
