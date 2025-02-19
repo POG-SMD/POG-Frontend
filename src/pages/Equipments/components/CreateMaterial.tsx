@@ -78,6 +78,16 @@ export const MaterialCreateModal = ({
             errorMessage={form.errors.title}
             disabled={createMaterial.loading}
           />
+          <TextField
+            type="number"
+            name="quantity"
+            label="Quantidade disponível:"
+            placeholder="Insira a quantidade disponível"
+            value={form.values.quantity === 0 ? '' : form.values.quantity}
+            onChange={value => form.setFieldValue('quantity', Number(value.target.value))}
+            errorMessage={form.errors.quantity}
+            disabled={createMaterial.loading}
+          />
           <TextareaField
             name="description"
             label="Descrição:"
@@ -87,25 +97,15 @@ export const MaterialCreateModal = ({
             errorMessage={form.errors.description}
             disabled={createMaterial.loading}
           />
-          <TextField
-            type="number"
-            name="quantity"
-            label="Quantidade disponível:"
-            placeholder="Insira a quantidade disponível"
-            value={form.values.quantity}
-            onChange={form.handleChange}
-            errorMessage={form.errors.quantity}
-            disabled={createMaterial.loading}
-          />
           <SelectField
-            options={getMaterialOptions()}
-            onChange={() => {}}
+            options={getMaterialOptions() || []}
+            onChange={value => form.setFieldValue('type', Number(value))}
             name="type"
             label="Tipo:"
-            placeholder="Tipo do material"
-            value={form.values.type}
+            placeholder="Selecione"
             errorMessage={form.errors.type}
             disabled={createMaterial.loading}
+            value={form.values.type}
           />
           <Button
             className="mt-6 col-span-2"

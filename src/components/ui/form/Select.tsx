@@ -46,7 +46,7 @@ export const Select = ({
         className={cn({ 'opacity-50 cursor-not-allowed': disabled }, className)}
         error={error}
       >
-        <SelectValue placeholder={placeholder} />
+        <SelectValue className='z-[200]' placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         {options.length === 0 ? (
@@ -55,7 +55,7 @@ export const Select = ({
           <>
             {options.map((option, index) => (
               <SelectItem key={index} value={option.value}>
-                <p className='text-start'>{option.label}</p>
+                <p className='text-start text-primary'>{option.label}</p>
               </SelectItem>
             ))}
           </>

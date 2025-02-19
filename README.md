@@ -768,7 +768,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   <td>Req.F. 16.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de visualização de usuário já existente, para que o administrador possa visualizar um usuário com um nome, email e imagem de forma 100% funcional.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 <tr>
   <td>Implementar endpoints para visualização de usuário já existente</td>
@@ -795,14 +795,14 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   <td>Req.F. 17.1</td>
   <td>Front-end</td>
   <td>Implementar a montagem do modal de deleção de usuário já existente, para que o administrador possa deletar um usuário já existente.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 <tr>
   <td>Integração do backend com o modal de deleção de usuário já existente</td>
   <td>Req.F. 17.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de deleção de usuário já existente, para que o administrador possa deletar um usuário de forma 100% funcional.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 <tr>
   <td>Implementar endpoints para deleção de usuário já existente</td>

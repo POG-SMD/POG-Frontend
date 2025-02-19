@@ -11,9 +11,9 @@ export const useFormMaterial = ({ onSubmit }: useFormProps) => {
 
   const Schema = Yup.object({
     title: Yup.string().required(t("global.validation.required")),
-    type: Yup.number().required(t("global.validation.required")),
+    type: Yup.number().min(1, t("global.validation.required")).required(t("global.validation.required")),
     description: Yup.string().required(t("global.validation.required")),
-    quantity: Yup.number().required(t("global.validation.required")),
+    quantity: Yup.number().min(1, t("global.validation.required")).required(t("global.validation.required")),
   });
 
   const initialValues = {
