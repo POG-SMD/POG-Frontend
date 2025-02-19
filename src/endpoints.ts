@@ -11,9 +11,11 @@ const endpoints: endpointsType[] = [
   { name: "deleteUser", route: "/api/v1/login/{id}", method: "delete" },
   { name: "editUser", route: "/api/v1/login/{id}", method: "put" },
   { name: "createUser", route: "/api/v1/login/register", method: "post" },
-
+  
   { name: "createMaterial", route: "/api/v1/material/create", method: "post" },
   { name: "getMaterials", route: "/api/v1/material/all", method: "get" },
+  { name: "getMaterial", route: "/api/v1/material/{id}", method: "get" },
+  { name: "deleteMaterial", route: "/api/v1/material/{id}", method: "delete" },
 
   { name: "getProjects", route: "/api/v1/login/all", method: "get" },
 ];

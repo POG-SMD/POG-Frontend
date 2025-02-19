@@ -5,14 +5,23 @@ import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { mainLayoutContext } from "@/layouts/MainLayout";
 import { MaterialCreateModal } from "./components/CreateMaterial";
-import { useGetMaterials } from "./hooks/useApi";
+import { useDeleteMaterial, useGetMaterials } from "./hooks/useApi";
 import { getMaterialType, MaterialType } from "@/types/materialType";
+import { MaterialDetails } from "./components/DetailsMaterial";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { Button, DeleteModal, Popover, PopoverContent, PopoverTrigger } from "@/components";
+import { toast } from "sonner";
 
 export const Equipments = () => {
   const { setHead } = useOutletContext<mainLayoutContext>();
   const getMaterials = useGetMaterials();
+  const deleteMaterial = useDeleteMaterial();
 
+  const [id, setId] = useState<string | number>(0);
+  const [deleteId, setDeleteId] = useState<string | number>(0);
+  const [openDetail, setOpenDetail] = useState<boolean>(false);
   const [openCreate, setOpenCreate] = useState<boolean>(false);
+  const [openDelete, setOpenDelete] = useState<boolean>(false);
 
   useEffect(() => {
     setHead({ title: "Vamos começar escolhendo os materiais" });
@@ -21,6 +30,33 @@ export const Equipments = () => {
 
   return (
     <>
+      <DeleteModal
+        open={openDelete}
+        setOpen={setOpenDelete}
+        title="Deletar"
+        description="asdsadasdasd"
+        loading={deleteMaterial.loading}
+        deleteClick={() => {
+          deleteMaterial
+            .makeRequest({ id: deleteId })
+            .then(() => {
+              toast.success("Material removido com sucesso!");
+              getMaterials.makeRequest()
+              setOpenDelete(false);
+            })
+            .catch((err) => {
+              if (err) {
+                console.log(err);
+                
+                toast.error(err.response.data.message);
+                return;
+              }
+
+              toast.error("Erro ao deletar material!");
+            });
+        }}
+      />
+      <MaterialDetails id={id} setOpen={setOpenDetail} open={openDetail} />
       <MaterialCreateModal
         open={openCreate}
         setOpen={setOpenCreate}
@@ -44,13 +80,6 @@ export const Equipments = () => {
               cells: {
                 Nome: material.title,
                 Quantidade: `${material.quantity || 1} unidade(s)`,
-                "Data de cadastro": (
-                  <p className="sm:block hidden">
-                    {material.createdAt
-                      ? new Date(material.createdAt).toLocaleDateString("pt-BR")
-                      : "Data não disponível"}
-                  </p>
-                ),
                 Disponibilidade: material.disponible
                   ? "Disponível"
                   : "Indisponível",
@@ -59,6 +88,36 @@ export const Equipments = () => {
                     {getMaterialType(String(material.type) as MaterialType)}
                   </p>
                 ),
+                "": (
+                  <Popover>
+                    <PopoverTrigger
+                      className="h-6 ml-auto cursor-pointer text-primary/70"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Icon icon="tabler:dots" className="h-5" fontSize={20} />
+                    </PopoverTrigger>
+
+                    <PopoverContent
+                      className="w-fit"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Button
+                        onClick={() => {
+                          setDeleteId(material.id);
+                          setOpenDelete(true);
+                        }}
+                        variant="destructive"
+                        className="w-full px-10"
+                      >
+                        Remover
+                      </Button>
+                    </PopoverContent>
+                  </Popover>
+                ),
+              },
+              onClick: () => {
+                setId(material.id);
+                setOpenDetail(true);
               },
             }))}
             setOpenCreate={setOpenCreate}

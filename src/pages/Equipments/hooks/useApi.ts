@@ -20,9 +20,23 @@ export const useCreateMaterial = () => {
   });
 };
 
+export const useDeleteMaterial = () => {
+  return useApi((id) => {
+    const { method, route } = getEndpoint("deleteMaterial", { ...id });
+    return httpClient[method](route);
+  });
+};
+
 export const useGetMaterials = () => {
   return useApi<MaterialType[]>(() => {
     const { method, route } = getEndpoint("getMaterials");
+    return httpClient[method](route);
+  });
+};
+
+export const useGetMaterial = () => {
+  return useApi<MaterialType>((id) => {
+    const { method, route } = getEndpoint("getMaterial", { ...id });
     return httpClient[method](route);
   });
 };
