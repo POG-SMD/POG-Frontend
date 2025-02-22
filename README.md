@@ -287,21 +287,21 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 4.1</td>
     <td>Front-end</td>
     <td>Implementar a montagem do modal de novo material, para que o administrador possa criar um novo material com uma descrição, tipo de material, nome, quantidade e imagem.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Integração do backend com o modal de cadastro de novo material.</td>
     <td>Req.F. 4.2</td>
     <td>Front-end</td>
     <td>Implementar a integração do modal de novo material, para que o administrador possa criar um novo material com uma descrição, tipo de material, nome, quantidade e imagem de forma 100% funcional.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Validação de formulário do modal de cadastro de novo material.</td>
     <td>Req.F. 4.3</td>
     <td>Front-end</td>
     <td>Validar o formulário com retornos visuais para o que deverá ser feito pelo administrador para cadastrar de forma correta um novo material</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr><tr>
     <td>Adicionar modelo de materiais no banco de dados.</td>
     <td>Req.NF. 4.1</td>
@@ -416,7 +416,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 7.2</td>
     <td>Front-end</td>
     <td>Implementar a integração da tela de vizualização de materiais existentes, para que o administrador possa vizualizar materiais existentes com uma descrição, tipo de material, nome, quantidade e imagem de forma 100% funcional.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Implementar endpoints para vizualização de materiais existentes.</td>
