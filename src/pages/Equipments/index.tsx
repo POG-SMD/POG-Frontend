@@ -79,7 +79,7 @@ export const Equipments = () => {
             data={getMaterials.data?.map((material) => ({
               cells: {
                 Nome: material.title,
-                Quantidade: `${material.quantity || 1} unidade(s)`,
+                Quantidade: `${material.quantity || 0} unidade(s)`,
                 Disponibilidade: material.disponible
                   ? "Disponível"
                   : "Indisponível",
