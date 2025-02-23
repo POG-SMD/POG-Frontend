@@ -63,11 +63,11 @@ export const ReservationDetails = ({
             <hr className="col-span-2" />
             <li className="flex flex-col gap-1">
               <h5 className="text-primary/80 font-semibold text-xl">Data de início:</h5>
-              <p className="font-medium text-primary/70 text-lg">{formatDate(getReservation?.data?.dateStart) ?? '--'}</p>
+              <p className="font-medium text-primary/70 text-lg">{getReservation?.data?.dateStart ? formatDate(getReservation?.data?.dateStart) : '--'}</p>
             </li>
             <li className="flex flex-col gap-1">
               <h5 className="text-primary/80 font-semibold text-xl">Data de devolução:</h5>
-              <p className="font-medium text-primary/70 text-lg">{formatDate(getReservation?.data?.dateEnd) ?? '--'}</p>
+              <p className="font-medium text-primary/70 text-lg">{getReservation?.data?.dateEnd ? formatDate(getReservation?.data?.dateEnd) : '--'}</p>
             </li>
             <li className="flex flex-col gap-1">
               <h5 className="text-primary/80 font-semibold text-xl">Horario de início de uso:</h5>
@@ -75,7 +75,7 @@ export const ReservationDetails = ({
             </li>
             <li className="flex flex-col gap-1">
               <h5 className="text-primary/80 font-semibold text-xl">Horário de fim de uso:</h5>
-              <p className="font-medium text-primary/70 text-lg">{getReservation?.data?.dateEnd ?? '--'}</p>
+              <p className="font-medium text-primary/70 text-lg">{getReservation?.data?.endTime ?? '--'}</p>
             </li>
             <hr className="col-span-2" />
             <li className="flex col-span-2 flex-col gap-1">

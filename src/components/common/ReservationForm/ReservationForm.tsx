@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../../ui/Button";
 import { CheckboxField } from "../../ui/form/fields/CheckboxField";
 import { ComboboxField } from "../../ui/form/fields/ComboboxField";
@@ -23,7 +23,9 @@ export const ReservationForm = ({
   type,
   hasMaterialDefault = false,
   refresh,
+  date
 }: {
+  date?: string
   header: JSX.Element;
   optionList: OptionsList[];
   successMessage: string;
@@ -54,9 +56,9 @@ export const ReservationForm = ({
         })
         .then(() => {
           toast.success(t(successMessage));
-          getStatus.makeRequest({ id: user?.id });
           setClose(false);
           refresh && refresh();
+          getStatus.makeRequest({ id: user?.id });
         })
         .catch((e) => {
           toast.error(e.response.data.message);
@@ -67,6 +69,12 @@ export const ReservationForm = ({
         });
     },
   });
+
+  useEffect(() => {
+    if (date) {
+      form.setFieldValue("dateStart", date);
+    }
+  }, [date]);
 
   return (
     <form
@@ -154,14 +162,14 @@ export const ReservationForm = ({
           disabled={createReservation.loading}
           value={form.values.dateStart}
         />
-        <DateField
+        {[ReservationType.EQUIPMENT].includes(type) && <DateField
           label="Insira a data de devolução:"
           errorMessage={form.errors.dateEnd}
           onChange={form.handleChange}
           name="dateEnd"
           disabled={createReservation.loading}
           value={form.values.dateEnd}
-        />
+        />}
 
         <fieldset className="flex flex-col sm:flex-row gap-4 items-center">
           <PatternField

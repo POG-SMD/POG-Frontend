@@ -3,10 +3,10 @@ export const navbarData = [
     name: "Home",
     link: "/home",
   },
-  {
-    name: "Materiais e avisos",
-    link: "material",
-  },
+  // {
+  //   name: "Materiais e avisos",
+  //   link: "material",
+  // },
   {
     name: "Administração",
     link: "/admin",

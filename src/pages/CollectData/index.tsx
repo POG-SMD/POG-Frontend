@@ -1,29 +1,35 @@
 import { VizualizeCalendar } from "@/components/common/Calendar";
 import { ReservationForm } from "@/components/common/ReservationForm/ReservationForm";
 import { mainLayoutContext } from "@/layouts/MainLayout";
-import { useEffect } from "react";
+import { ReservationType } from "@/types/reservationType";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import { useGetMaterialOptions } from "../Equipments/hooks/useApi";
 
 export const CollectData = () => {
   const { setHead } = useOutletContext<mainLayoutContext>();
+  const getMaterialOptions = useGetMaterialOptions();
+
+  const [date, setDate] = useState<string>("");
 
   useEffect(() => {
     setHead({ title: "Vamos começar escolhendo um dia." });
+    getMaterialOptions.makeRequest();
   }, []);
 
   return (
     <div>
       <VizualizeCalendar
         hasDetails={false}
+        setDate={setDate}
         leftContent={
           <ReservationForm
+            date={date}
             className="my-auto"
-            loading={false}
-            errorMessage="Erro ao reservar materiais"
-            successMessage="Sucesso ao reservar materiais"
+            successMessage="Sucesso ao reservar espaço"
             header={<p className="">Espaço para reuniões da célula</p>}
-            optionList={[{ label: "", value: "" }]}
-            setState={() => {}}
+            optionList={getMaterialOptions?.data || []}
+            type={ReservationType.DATA_COLLECT}
           />
         }
       />

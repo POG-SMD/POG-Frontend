@@ -1,5 +1,5 @@
 import { Calendar } from "rsuite";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { cn } from "@/libs";
 import { Icon } from "@iconify/react/dist/iconify.js";
 
@@ -31,14 +31,19 @@ function getTodoList(date: Date | null) {
 export const VizualizeCalendar = ({
   hasDetails = true,
   leftContent,
+  setDate,
 }: {
   hasDetails?: boolean;
   leftContent?: JSX.Element
+  setDate?: Dispatch<SetStateAction<string>>
 }) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const handleSelect = (date: Date) => {
-    setSelectedDate(date);
+    setSelectedDate(date)
+    const dateToFormat = new Date(date)
+    const formattedDate = dateToFormat.toISOString().split("T")[0]
+    setDate && setDate(formattedDate)
   };
 
   return (

@@ -21,7 +21,7 @@ export const useFormReservation = ({ onSubmit }: useFormReservationProps) => {
       otherwise: (schema) => schema.notRequired(),
     }),
     dateStart: Yup.string().required(t("global.validation.required")),
-    dateEnd: Yup.string().required(t("global.validation.required")),
+    dateEnd: Yup.string().notRequired(),
     purpose: Yup.string().required(t("global.validation.required")),
     startTime: Yup.string()
       .required(t("global.validation.required"))
