@@ -31,6 +31,19 @@ export const VizualizeCalendar = ({
     setDate && setDate(formattedDate);
   };
 
+  const renderCell = (date: Date) => {
+    const formattedDate = date.toISOString().split("T")[0];
+    const hasReservations = reservations.some(
+      (res) => res.dateStart === formattedDate && res.status === statusType.EM_RESERVA
+    );
+
+    return hasReservations ? (
+      <div className="relative">
+        <span className="absolute -top-3.5 left-2/3 w-2 h-2 bg-red-500 rounded-full" />
+      </div>
+    ) : null;
+  };
+
   return (
     <div className="flex flex-col gap-5 lg:gap-0 lg:grid grid-cols-12 2xl:px-0 sm:px-5 px-2 mb-5">
       <span className="col-span-1 2xl:block hidden" />
@@ -38,25 +51,19 @@ export const VizualizeCalendar = ({
       {hasDetails && (
         <div className="mx-auto w-full lg:col-span-4 2xl:col-span-3">
           {selectedDate ? (
-            <DayDetails
-              date={selectedDate}
-              reservations={getReservationsByDate(selectedDate)}
-            />
+            <DayDetails date={selectedDate} reservations={getReservationsByDate(selectedDate)} />
           ) : (
             <WelcomeMessage />
           )}
         </div>
       )}
       <span className="col-span-1" />
-      <div
-        className={cn("lg:col-span-7 xl:col-span-7 2xl:col-span-6 h-fit", {
-          "w-full": !hasDetails,
-        })}
-      >
+      <div className={cn("lg:col-span-7 xl:col-span-7 2xl:col-span-6 h-fit", { "w-full": !hasDetails })}>
         <Calendar
           onSelect={handleSelect}
           bordered
           className="bg-secondary border-2 border-primary rounded-md w-full"
+          renderCell={renderCell}
         />
       </div>
       <span className="col-span-1 2xl:block hidden" />

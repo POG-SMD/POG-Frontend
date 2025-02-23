@@ -5,15 +5,18 @@ import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { useGetMaterialOptions } from "../Equipments/hooks/useApi";
 import { ReservationType } from "@/types/reservationType";
+import { useGetReservations } from "../Admin/hooks/useApi";
 
 export const Reunion = () => {
   const { setHead } = useOutletContext<mainLayoutContext>();
   const getMaterialOptions = useGetMaterialOptions();
+  const getReservations = useGetReservations();
 
   const [date, setDate] = useState<string>("");
 
   useEffect(() => {
     setHead({ title: "Vamos começar escolhendo um dia." });
+    getReservations.makeRequest();
     getMaterialOptions.makeRequest();
   }, []);
 
@@ -22,6 +25,7 @@ export const Reunion = () => {
       <VizualizeCalendar
         hasDetails={false}
         setDate={setDate}
+        reservations={getReservations?.data || []}
         leftContent={
           <ReservationForm
             date={date}
