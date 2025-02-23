@@ -13,6 +13,7 @@ import { cn } from "@/libs";
 import { ReservationType } from "@/types/reservationType";
 import { useAuth } from "@/contexts";
 import { useCreateReservation } from "./hook/useApi";
+import { useGetStatus } from "@/layouts/MainLayout/api/useApi";
 
 export const ReservationForm = ({
   header,
@@ -20,24 +21,27 @@ export const ReservationForm = ({
   successMessage,
   className,
   type,
-  refresh
+  hasMaterialDefault = false,
+  refresh,
 }: {
   header: JSX.Element;
   optionList: OptionsList[];
   successMessage: string;
   className?: string;
   type: ReservationType;
-  refresh?: () => void
+  hasMaterialDefault?: boolean;
+  refresh?: () => void;
 }) => {
   const createReservation = useCreateReservation();
-  const [hasMaterial, setHasMaterial] = useState<boolean>(false);
+  const [hasMaterial, setHasMaterial] = useState<boolean>(hasMaterialDefault);
   const [materials, setMaterials] = useState<number[]>([]);
-  const { user } = useAuth();
+  const { user, setClose } = useAuth();
+  const getStatus = useGetStatus();
 
   const form = useFormReservation({
     onSubmit: () => {
       if (hasMaterial && materials.length === 0)
-        throw new Error("no materials");
+        toast.error("Selecione ao menos 1 material!");
 
       if (!user) throw new Error("no user");
 
@@ -50,15 +54,17 @@ export const ReservationForm = ({
         })
         .then(() => {
           toast.success(t(successMessage));
-          refresh && refresh()
+          getStatus.makeRequest({ id: user?.id });
+          setClose(false);
+          refresh && refresh();
         })
         .catch((e) => {
           toast.error(e.response.data.message);
         })
         .finally(() => {
-          form.resetForm()
-          setMaterials([])
-        })
+          form.resetForm();
+          setMaterials([]);
+        });
     },
   });
 
@@ -75,16 +81,18 @@ export const ReservationForm = ({
       </header>
 
       <section className="flex flex-col gap-4">
-        <CheckboxField
-          checked={hasMaterial}
-          onCheckedChange={() => {
-            setMaterials([]);
-            setHasMaterial(!hasMaterial);
-          }}
-          label="Possui material"
-          id="hasMaterial"
-          disabled={createReservation.loading}
-        />
+        {!hasMaterialDefault && (
+          <CheckboxField
+            checked={hasMaterial}
+            onCheckedChange={() => {
+              setMaterials([]);
+              setHasMaterial(!hasMaterial);
+            }}
+            label="Possui material"
+            id="hasMaterial"
+            disabled={createReservation.loading}
+          />
+        )}
 
         <ComboboxField
           options={optionList}

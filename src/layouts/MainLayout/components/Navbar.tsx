@@ -16,11 +16,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/Sheet";
 import { useAuth } from "@/contexts";
+import { RoleType } from "@/types/roleType";
 
 export const Navbar = () => {
   const location = useLocation();
 
-  const { setToken } = useAuth();
+  const { setToken, user } = useAuth();
 
   return (
     <header className="bg-secondary shadow-sm shadow-[#00000060] w-full fixed top-0 z-[100]">
@@ -100,6 +101,10 @@ export const Navbar = () => {
                             {
                               "bg-gray-600 text-secondary":
                                 location.pathname.includes(item.link),
+
+                              hidden:
+                                item.permission === "ADM" &&
+                                user?.role === RoleType.USER,
                             }
                           )}
                           to={item.link}
@@ -169,6 +174,9 @@ export const Navbar = () => {
                       "bg-gray-600 text-secondary": location.pathname.includes(
                         item.link
                       ),
+                      hidden:
+                        item.permission === "ADM" &&
+                        user?.role === RoleType.USER,
                     }
                   )}
                   to={item.link}

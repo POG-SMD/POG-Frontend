@@ -1,5 +1,7 @@
 import {
+  Dispatch,
   ReactNode,
+  SetStateAction,
   createContext,
   useContext,
   useEffect,
@@ -23,6 +25,8 @@ interface AuthContextData {
   loading: boolean;
   setToken: (token: string | null, user?: User | null) => void;
   setUser: (data: User | null) => void;
+  setClose: Dispatch<SetStateAction<boolean>>;
+  close: boolean;
 }
 
 const AuthContext = createContext<AuthContextData>({
@@ -31,12 +35,20 @@ const AuthContext = createContext<AuthContextData>({
   loading: false,
   setToken: () => {},
   setUser: () => {},
+  setClose: () => {},
+  close: false,
 });
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setTokenState] = useState<string | null>(
     window.localStorage.getItem("auth:token")
   );
+
+  const [close, setClose] = useState<boolean>(() => {
+    const storedClose = window.localStorage.getItem("auth:close");
+    return storedClose ? JSON.parse(storedClose) : false;
+  });
+
   const [user, setUser] = useState<User | null>(() => {
     const storedUser = window.localStorage.getItem("auth:user");
     return storedUser ? JSON.parse(storedUser) : null;
@@ -61,6 +73,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(null);
     }
   };
+
+  useEffect(() => {
+    window.localStorage.setItem("auth:close", JSON.stringify(close));
+  }, [close]);
 
   useEffect(() => {
     if (!token) {
@@ -97,6 +113,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         loading,
         setToken,
         setUser,
+        setClose,
+        close,
       }}
     >
       {children}

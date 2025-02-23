@@ -18,7 +18,6 @@ export const ReservationDetails = ({
 
   useEffect(() => {
     if (!open || !id) return;
-    console.log(id);
     
     getReservation.makeRequest({ id });
   }, [open, id]);

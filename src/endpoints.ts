@@ -24,6 +24,10 @@ const endpoints: endpointsType[] = [
   { name: "deleteReservation", route: "/api/v1/reservation/{id}", method: "delete" },
   { name: "acceptReservation", route: "/api/v1/reservation/accept/{id}", method: "put" },
   { name: "refuseReservation", route: "/api/v1/reservation/refuse/{id}", method: "put" },
+  { name: "returnReservation", route: "/api/v1/reservation/return/{id}", method: "put" },
+  { name: "cancelReservation", route: "/api/v1/reservation/cancel/{id}", method: "put" },
+
+  { name: "getStatus", route: "/api/v1/reservation/status/{id}", method: "get" },
 ];
 
 export const getEndpoint = (

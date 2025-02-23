@@ -10,6 +10,7 @@ export const navbarData = [
   {
     name: "Administração",
     link: "/admin",
+    permission: 'ADM'
   },
   {
     name: "Reservas",

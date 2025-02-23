@@ -88,6 +88,7 @@ export const Equipments = () => {
             getMaterials.makeRequest();
             getMaterialOptions.makeRequest();
           }}
+          hasMaterialDefault
         />
         <div className="col-span-6 2xl:col-span-7">
           <DynamicTable

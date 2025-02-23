@@ -1,18 +1,22 @@
 import { mainLayoutContext } from "@/layouts/MainLayout";
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { TableAdmin } from "./components/TableAdmin";
 import { useGetReservations, useGetUsers } from "./hooks/useApi";
 import { UserDetails } from "./components/UserDetails";
 import { UserCreateModal } from "./components/UserCreateModal";
 import { Loading } from "@/components/common/Loading";
 import { ReservationDetails } from "./components/ReservationDetails";
+import { useAuth } from "@/contexts";
+import { RoleType } from "@/types/roleType";
 
 export const Admin = () => {
   const { setHead } = useOutletContext<mainLayoutContext>();
+  const { user } = useAuth()
 
   const getUsers = useGetUsers();
   const getReservations = useGetReservations();
+  const navigate = useNavigate()
 
   const [id, setId] = useState<string | number>(0);
   const [openUser, setOpenUser] = useState<boolean>(false);
@@ -25,6 +29,10 @@ export const Admin = () => {
     getUsers.makeRequest();
     getReservations.makeRequest()
   }, []);
+
+  if(user?.role === RoleType.USER) {
+    navigate('/home')
+  }
 
   if (!getUsers?.data) return <div className="w-full h-[50vh] flex justify-center items-center"><Loading size='xl' /></div>;
 
