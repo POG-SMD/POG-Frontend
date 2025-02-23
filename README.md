@@ -450,7 +450,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td>Req.F. 8.2</td>
     <td>Front-end</td>
     <td>Implementar a integração do modal de reserva de materiais existentes de forma 100% funcional.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Implementar endpoints para reserva de materiais existentes.</td>
