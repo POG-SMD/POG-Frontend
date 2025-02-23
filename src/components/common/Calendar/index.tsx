@@ -1,49 +1,34 @@
 import { Calendar } from "rsuite";
 import { Dispatch, SetStateAction, useState } from "react";
 import { cn } from "@/libs";
-import { Icon } from "@iconify/react/dist/iconify.js";
+import { Icon } from "@iconify/react";
+import { ReservationResponseProps } from "../ReservationForm/hook/useApi";
+import { statusType } from "@/types/statusType";
+import { formatDate } from "@/pages/Admin/components/ReservationDetails";
 
-function getTodoList(date: Date | null) {
-  if (!date) {
-    return [];
-  }
-  const day = date.getDate();
-
-  switch (day) {
-    case 10:
-      return [
-        { time: "10:30 am", title: "Meeting" },
-        { time: "12:00 pm", title: "Lunch" },
-      ];
-    case 15:
-      return [
-        { time: "09:30 pm", title: "Products Introduction Meeting" },
-        { time: "12:30 pm", title: "Client entertaining" },
-        { time: "02:00 pm", title: "Product design discussion" },
-        { time: "05:00 pm", title: "Product test and acceptance" },
-        { time: "06:30 pm", title: "Reporting" },
-      ];
-    default:
-      return [];
-  }
+interface CalendarProps {
+  reservations?: ReservationResponseProps[];
+  hasDetails?: boolean;
+  leftContent?: JSX.Element;
+  setDate?: Dispatch<SetStateAction<string>>;
 }
 
 export const VizualizeCalendar = ({
+  reservations = [],
   hasDetails = true,
   leftContent,
   setDate,
-}: {
-  hasDetails?: boolean;
-  leftContent?: JSX.Element
-  setDate?: Dispatch<SetStateAction<string>>
-}) => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+}: CalendarProps) => {
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+
+  const getReservationsByDate = (date: string) => {
+    return reservations.filter((res) => res.dateStart === date);
+  };
 
   const handleSelect = (date: Date) => {
-    setSelectedDate(date)
-    const dateToFormat = new Date(date)
-    const formattedDate = dateToFormat.toISOString().split("T")[0]
-    setDate && setDate(formattedDate)
+    const formattedDate = date.toISOString().split("T")[0];
+    setSelectedDate(formattedDate);
+    setDate && setDate(formattedDate);
   };
 
   return (
@@ -53,33 +38,12 @@ export const VizualizeCalendar = ({
       {hasDetails && (
         <div className="mx-auto w-full lg:col-span-4 2xl:col-span-3">
           {selectedDate ? (
-            <DayDetails date={selectedDate} />
+            <DayDetails
+              date={selectedDate}
+              reservations={getReservationsByDate(selectedDate)}
+            />
           ) : (
-            <div className="flex flex-col gap-10 py-10 bg-secondary h-full border-2 rounded-md px-6 border-primary text-center overflow-auto">
-              <h2 className="text-3xl text-center font-bold">Bem vindo a celulose!</h2>
-              <p className="text-2xl text-center px-10 font-semibold">Aqui nesse site você consegue:</p>
-
-              <ul className="flex flex-col gap-10 px-2">
-                <li className="flex items-center gap-5">
-                  <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
-                    <Icon fontSize={48} className="" icon='streamline:dices-entertainment-gaming-dices' />
-                  </div>
-                  <p className="font-medium text-xl text-start">Agendar os espaços</p>
-                </li>
-                <li className="flex items-center gap-5">
-                  <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
-                    <Icon fontSize={48} className="" icon='grommet-icons:cubes' />
-                  </div>
-                  <p className="font-medium text-xl text-start">Solicitar equipamentos</p>
-                </li>
-                <li className="flex items-center gap-5">
-                  <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
-                    <Icon fontSize={48} className="" icon='mdi:link-variant' />
-                  </div>
-                  <p className="font-medium text-xl text-start">Manejar links</p>
-                </li>
-              </ul>
-            </div>
+            <WelcomeMessage />
           )}
         </div>
       )}
@@ -91,9 +55,6 @@ export const VizualizeCalendar = ({
       >
         <Calendar
           onSelect={handleSelect}
-          cellClassName={(date) =>
-            date.getDay() % 2 ? "bg-gray-100" : undefined
-          }
           bordered
           className="bg-secondary border-2 border-primary rounded-md w-full"
         />
@@ -103,25 +64,64 @@ export const VizualizeCalendar = ({
   );
 };
 
-// Estilizar aqui
-const DayDetails = ({ date }: { date: Date | null }) => {
-  const list = getTodoList(date);
-
+const DayDetails = ({
+  date,
+  reservations,
+}: {
+  date: string;
+  reservations: ReservationResponseProps[];
+}) => {
   return (
     <div className="w-full h-full bg-secondary border-2 rounded-md py-1 px-6 border-primary text-center overflow-auto">
-      {list.length ? (
-        <ul>
-          {list.map((item) => (
-            <li key={item.time} className="mb-2">
-              <strong>{item.time}:</strong> {item.title}
-            </li>
-          ))}
+      <h3 className="text-lg font-bold mb-2">Reservas em {formatDate(date)}</h3>
+      {reservations.length > 0 ? (
+        <ul className="text-left">
+          {reservations
+            .filter((res) => res.status === statusType.EM_RESERVA)
+            .map((res, index) => (
+              <li key={index} className="mb-2">
+                <strong>
+                  {res.startTime} - {res.endTime}:
+                </strong>
+                {res.purpose} ({res.user.name}) {res.dateStart} {res.status}
+              </li>
+            ))}
         </ul>
       ) : (
         <p className="text-gray-500 text-sm text-center">
-          Nenhuma tarefa para este dia.
+          Nenhuma reserva para este dia.
         </p>
       )}
     </div>
   );
 };
+
+const WelcomeMessage = () => (
+  <div className="flex flex-col gap-10 py-10 bg-secondary h-full border-2 rounded-md px-6 border-primary text-center overflow-auto">
+    <h2 className="text-3xl text-center font-bold">Bem-vindo à Celulose!</h2>
+    <p className="text-2xl text-center px-10 font-semibold">Aqui você pode:</p>
+    <ul className="flex flex-col gap-10 px-2">
+      <li className="flex items-center gap-5">
+        <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
+          <Icon
+            fontSize={48}
+            icon="streamline:dices-entertainment-gaming-dices"
+          />
+        </div>
+        <p className="font-medium text-xl text-start">Agendar os espaços</p>
+      </li>
+      <li className="flex items-center gap-5">
+        <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
+          <Icon fontSize={48} icon="grommet-icons:cubes" />
+        </div>
+        <p className="font-medium text-xl text-start">Solicitar equipamentos</p>
+      </li>
+      <li className="flex items-center gap-5">
+        <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
+          <Icon fontSize={48} icon="mdi:link-variant" />
+        </div>
+        <p className="font-medium text-xl text-start">Manejar links</p>
+      </li>
+    </ul>
+  </div>
+);

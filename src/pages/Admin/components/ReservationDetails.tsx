@@ -5,6 +5,12 @@ import { getRoleText } from "@/types/roleType";
 import { format } from "date-fns";
 import { getReservationType, ReservationType } from "@/types/reservationType";
 
+export const formatDate = (dateString?: string) => {
+  if (!dateString) return "";
+  const [year, month, day] = dateString.split("-");
+  return `${day}/${month}/${year}`;
+};
+
 export const ReservationDetails = ({
   id,
   setOpen,
@@ -21,12 +27,6 @@ export const ReservationDetails = ({
     
     getReservation.makeRequest({ id });
   }, [open, id]);
-
-  const formatDate = (dateString?: string) => {
-    if (!dateString) return "";
-    const [year, month, day] = dateString.split("-");
-    return `${day}/${month}/${year}`;
-  };
 
   return (
     <Dialog onOpenChange={setOpen} open={open}>

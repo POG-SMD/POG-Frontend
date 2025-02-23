@@ -2,6 +2,7 @@ import { getEndpoint } from "@/endpoints";
 import { useApi } from "@/hooks/useApi";
 import { UserType } from "@/pages/Admin/hooks/useApi";
 import { MaterialType } from "@/pages/Equipments/hooks/useApi";
+import { statusType } from "@/types/statusType";
 import { httpClient } from "@/utils/httpClient";
 
 export interface ReservationResponseProps {
@@ -15,6 +16,7 @@ export interface ReservationResponseProps {
   purpose: string;
   startTime: string;
   endTime: string;
+  status: statusType;
 }
 
 export const useCreateReservation = () => {
