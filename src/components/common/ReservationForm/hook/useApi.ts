@@ -1,19 +1,22 @@
+import { getEndpoint } from "@/endpoints";
 import { useApi } from "@/hooks/useApi";
-import { fakeRequest } from "@/utils/httpClient";
+import { httpClient } from "@/utils/httpClient";
 
-export interface useReservationResponseProps {
-  hasMaterial: boolean;
+export interface ReservationResponseProps {
+  userId: number;
+  type: number;
+
   materials: string[];
-  usageDate: string;
-  usagePurpose: string;
-  reservationSchedule: string;
-  devolutionSchedule: string;
+  dateStart: string;
+  dateEnd: string;
+  purpose: string;
+  startTime: string;
+  endTime: string;
 }
 
-export const useReservationResponse = () => {
-  return useApi<useReservationResponseProps>(() => {
-    // const { method, route } = getEndpoint('getPlans')
-    // return httpClient[method](route)
-    return fakeRequest([], 2000);
+export const useCreateReservation = () => {
+  return useApi<ReservationResponseProps>((values) => {
+    const { method, route } = getEndpoint("createReservation");
+    return httpClient[method](route, { ...values });
   });
 };

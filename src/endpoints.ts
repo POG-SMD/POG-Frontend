@@ -15,9 +15,12 @@ const endpoints: endpointsType[] = [
   { name: "createMaterial", route: "/api/v1/material/create", method: "post" },
   { name: "getMaterials", route: "/api/v1/material/all", method: "get" },
   { name: "getMaterial", route: "/api/v1/material/{id}", method: "get" },
+  { name: "getMaterialOptions", route: "/api/v1/material/options", method: "get" },
   { name: "deleteMaterial", route: "/api/v1/material/{id}", method: "delete" },
-
+  
   { name: "getProjects", route: "/api/v1/login/all", method: "get" },
+  
+  { name: "createReservation", route: "/api/v1/reservation/create", method: "post" },
 ];
 
 export const getEndpoint = (

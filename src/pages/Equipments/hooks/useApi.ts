@@ -1,3 +1,4 @@
+import { OptionsList } from "@/components/ui/form/Select";
 import { getEndpoint } from "@/endpoints";
 import { useApi } from "@/hooks/useApi";
 import { httpClient } from "@/utils/httpClient";
@@ -37,6 +38,13 @@ export const useGetMaterials = () => {
 export const useGetMaterial = () => {
   return useApi<MaterialType>((id) => {
     const { method, route } = getEndpoint("getMaterial", { ...id });
+    return httpClient[method](route);
+  });
+};
+
+export const useGetMaterialOptions = () => {
+  return useApi<OptionsList[]>(() => {
+    const { method, route } = getEndpoint("getMaterialOptions");
     return httpClient[method](route);
   });
 };

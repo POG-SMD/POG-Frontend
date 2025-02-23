@@ -20,23 +20,30 @@ export const useFormReservation = ({ onSubmit }: useFormReservationProps) => {
           .required(t("global.validation.required")),
       otherwise: (schema) => schema.notRequired(),
     }),
-    usageDate: Yup.string().required(t("global.validation.required")),
-    usagePurpose: Yup.string().required(t("global.validation.required")),
-    reservationSchedule: Yup.string()
+    dateStart: Yup.string().required(t("global.validation.required")),
+    dateEnd: Yup.string().required(t("global.validation.required")),
+    purpose: Yup.string().required(t("global.validation.required")),
+    startTime: Yup.string()
       .required(t("global.validation.required"))
       .matches(timeRegex, t("Horário inválido!")),
-    devolutionSchedule: Yup.string()
+    endTime: Yup.string()
       .required(t("global.validation.required"))
       .matches(timeRegex, t("Horário inválido!")),
   });
 
   const initialValues = {
     hasMaterial: false,
+
     materials: [],
-    usageDate: "",
-    usagePurpose: "",
-    reservationSchedule: "",
-    devolutionSchedule: "",
+    dateStart: "",
+    dateEnd: "",
+    purpose: "",
+    startTime: "",
+    endTime: "",
+
+    type: 0,
+    userId: 0,
+    status: 0
   };
 
   return useFormik({

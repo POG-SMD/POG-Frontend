@@ -21,7 +21,7 @@ export const useFormMaterial = ({ onSubmit }: useFormProps) => {
     description: '',
     type: 0,
     quantity: 0,
-    disponible: false
+    disponible: true
   };
 
   return useFormik({

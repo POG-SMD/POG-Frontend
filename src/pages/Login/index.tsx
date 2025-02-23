@@ -8,7 +8,7 @@ import { t } from "i18next";
 
 export const Login = () => {
   
-  const { setToken } = useAuth()
+  const { setToken, setUser } = useAuth()
   const signIn = useSignIn()
   const navigate = useNavigate()
 
@@ -19,10 +19,15 @@ export const Login = () => {
           ...form.values,
         })
         .then(res => {
-          
           const responseData = res.data
+          
           // @ts-ignore
           setToken(responseData.token)
+          // @ts-ignore
+          setUser(responseData.data)
+
+          localStorage.setItem("auth:user", JSON.stringify(responseData.data));
+
           navigate('/home')
           toast.success(t('signIn.toast.success'))
         })
@@ -31,8 +36,6 @@ export const Login = () => {
         })
     },
   })
-  
-
 
   return (
     <form onSubmit={form.handleSubmit} className="flex flex-col gap-10 w-full sm:px-0 px-10 sm:w-96 m-auto">

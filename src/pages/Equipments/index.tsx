@@ -5,17 +5,29 @@ import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { mainLayoutContext } from "@/layouts/MainLayout";
 import { MaterialCreateModal } from "./components/CreateMaterial";
-import { useDeleteMaterial, useGetMaterials } from "./hooks/useApi";
+import {
+  useDeleteMaterial,
+  useGetMaterialOptions,
+  useGetMaterials,
+} from "./hooks/useApi";
 import { getMaterialType, MaterialType } from "@/types/materialType";
 import { MaterialDetails } from "./components/DetailsMaterial";
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Button, DeleteModal, Popover, PopoverContent, PopoverTrigger } from "@/components";
+import {
+  Button,
+  DeleteModal,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components";
 import { toast } from "sonner";
+import { ReservationType } from "@/types/reservationType";
 
 export const Equipments = () => {
   const { setHead } = useOutletContext<mainLayoutContext>();
   const getMaterials = useGetMaterials();
   const deleteMaterial = useDeleteMaterial();
+  const getMaterialOptions = useGetMaterialOptions();
 
   const [id, setId] = useState<string | number>(0);
   const [deleteId, setDeleteId] = useState<string | number>(0);
@@ -26,6 +38,7 @@ export const Equipments = () => {
   useEffect(() => {
     setHead({ title: "Vamos começar escolhendo os materiais" });
     getMaterials.makeRequest();
+    getMaterialOptions.makeRequest();
   }, []);
 
   return (
@@ -41,13 +54,12 @@ export const Equipments = () => {
             .makeRequest({ id: deleteId })
             .then(() => {
               toast.success("Material removido com sucesso!");
-              getMaterials.makeRequest()
+              getMaterials.makeRequest();
+              getMaterialOptions.makeRequest();
               setOpenDelete(false);
             })
             .catch((err) => {
               if (err) {
-                console.log(err);
-                
                 toast.error(err.response.data.message);
                 return;
               }
@@ -60,17 +72,22 @@ export const Equipments = () => {
       <MaterialCreateModal
         open={openCreate}
         setOpen={setOpenCreate}
-        refresh={() => getMaterials.makeRequest()}
+        refresh={() => {
+          getMaterials.makeRequest();
+          getMaterialOptions.makeRequest();
+        }}
       />
       <section className="flex flex-col lg:grid grid-cols-10 gap-10 px-5 lg:px-10 mb-10">
         <ReservationForm
           className="my-auto col-span-4 2xl:col-span-3"
-          loading={false}
-          errorMessage="Erro ao reservar materiais"
           successMessage="Sucesso ao reservar materiais"
           header={<p className="">Equipamentos</p>}
-          optionList={[{ label: "", value: "" }]}
-          setState={() => {}}
+          optionList={getMaterialOptions?.data || []}
+          type={ReservationType.EQUIPMENT}
+          refresh={() => {
+            getMaterials.makeRequest();
+            getMaterialOptions.makeRequest();
+          }}
         />
         <div className="col-span-6 2xl:col-span-7">
           <DynamicTable
@@ -80,9 +97,8 @@ export const Equipments = () => {
               cells: {
                 Nome: material.title,
                 Quantidade: `${material.quantity || 0} unidade(s)`,
-                Disponibilidade: material.disponible
-                  ? "Disponível"
-                  : "Indisponível",
+                Disponibilidade:
+                  material.quantity > 0 ? "Disponível" : "Indisponível",
                 Importancia: (
                   <p className="bg-gray-200 border border-primary w-fit px-1.5 py-0.5 rounded-2xl">
                     {getMaterialType(String(material.type) as MaterialType)}

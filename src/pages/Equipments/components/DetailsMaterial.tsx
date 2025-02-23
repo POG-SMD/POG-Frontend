@@ -63,7 +63,7 @@ export const MaterialDetails = ({
                 Disponível:
               </h5>
               <p className="font-medium text-primary/70 text-lg">
-                {getMaterial?.data?.disponible ? 'Sim' : 'Não'}
+                {getMaterial?.data?.quantity > 0 ? 'Sim' : 'Não'}
               </p>
             </li>
             <li className="flex flex-col gap-1">
