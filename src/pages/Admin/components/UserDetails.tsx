@@ -18,13 +18,12 @@ export const UserDetails = ({
   useEffect(() => {
     if (!open || !id) return;
 
-    console.log("Requisição para ID:", id);
     getUser.makeRequest({ id });
   }, [open, id]);
 
   return (
     <Dialog onOpenChange={setOpen} open={open}>
-      <DialogContent className="min-h-96">
+      <DialogContent className="min-h-96 max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{getUser?.data?.name}</DialogTitle>
 

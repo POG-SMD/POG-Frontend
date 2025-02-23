@@ -1,3 +1,4 @@
+import { ReservationResponseProps } from "@/components/common/ReservationForm/hook/useApi";
 import { getEndpoint } from "@/endpoints";
 import { useApi } from "@/hooks/useApi";
 import { RoleType } from "@/types/roleType";
@@ -41,9 +42,37 @@ export const useCreateUser = () => {
   });
 };
 
-export const useGetProjects = () => {
-  return useApi<UserType>((values) => {
-    const { method, route } = getEndpoint("useGetProjects");
+export const useGetReservations = () => {
+  return useApi<ReservationResponseProps[]>((values) => {
+    const { method, route } = getEndpoint("getReservations");
     return httpClient[method](route, { ...values });
+  });
+};
+
+export const useGetReservation = () => {
+  return useApi<ReservationResponseProps>((id) => {
+    const { method, route } = getEndpoint("getReservation", { ...id });
+    return httpClient[method](route);
+  });
+};
+
+export const useDeleteReservation = () => {
+  return useApi((id) => {
+    const { method, route } = getEndpoint("deleteReservation", { ...id });
+    return httpClient[method](route);
+  });
+};
+
+export const useAcceptReservation = () => {
+  return useApi<ReservationResponseProps>((id) => {
+    const { method, route } = getEndpoint("acceptReservation", { ...id });
+    return httpClient[method](route);
+  });
+};
+
+export const useRefusetReservation = () => {
+  return useApi<ReservationResponseProps>((id) => {
+    const { method, route } = getEndpoint("refuseReservation", { ...id });
+    return httpClient[method](route);
   });
 };

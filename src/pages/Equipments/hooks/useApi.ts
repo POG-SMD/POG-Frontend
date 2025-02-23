@@ -3,7 +3,7 @@ import { getEndpoint } from "@/endpoints";
 import { useApi } from "@/hooks/useApi";
 import { httpClient } from "@/utils/httpClient";
 
-type MaterialType = {
+export type MaterialType = {
   id: number;
   type: MaterialType;
   title: string;
