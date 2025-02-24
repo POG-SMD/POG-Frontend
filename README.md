@@ -367,7 +367,7 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
 
   <tr></tr>
   <tr>
-    <th colspan=5><h2>Requisito Macro 06 -> Vizualização detalhada de material existente ⛔</h2></th>
+    <th colspan=5><h2>Requisito Macro 06 -> Vizualização detalhada de material existente</h2></th>
   </tr>
   
   <tr>
@@ -378,11 +378,11 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
     <td align=center>✅</td>
   </tr>
   <tr>
-    <td>Integração do backend com o modal de vizualização de material já existente. ⛔</td>
+    <td>Integração do backend com o modal de vizualização de material já existente.</td>
     <td>Req.F. 6.2</td>
     <td>Front-end</td>
     <td>Implementar a integração do modal de vizualização de material já existente, para que o usuário possa vizualizar um material com uma descrição, tipo de material, nome, quantidade e imagem de forma 100% funcional.</td>
-    <td align=center>❌</td>
+    <td align=center>✅</td>
   </tr>
   <tr>
     <td>Implementar endpoints para vizualização de material já existente.</td>
@@ -484,14 +484,14 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   <td>Req.F. 9.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de novo espaço, para que o administrador possa criar um novo espaço com uma descrição, tipo de espaço e nome de forma 100% funcional.</td>
-  <td align=center>❌</td>
+  <td align=center>>✅</td>
 </tr>
 <tr>
   <td>Validação de formulário do modal de cadastro de novo espaço</td>
   <td>Req.F. 9.3</td>
   <td>Front-end</td>
   <td>Validar o formulário com retornos visuais para o que deverá ser feito pelo administrador para cadastrar de forma correta um novo espaço.</td>
-  <td align=center>❌</td>
+  <td align=center>>✅</td>
 </tr>
 <tr>
   <td>Adicionar modelo de espaços no banco de dados</td>
