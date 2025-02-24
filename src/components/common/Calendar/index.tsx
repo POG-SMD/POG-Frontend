@@ -90,30 +90,56 @@ const DayDetails = ({
   return (
     <div className="w-full h-full bg-secondary border-2 rounded-md py-1 px-6 border-primary text-center overflow-auto">
       <h3 className="text-lg font-bold mb-2">Reservas em {formatDate(date)}</h3>
-      {reservations.filter((res) => res.status === statusType.EM_RESERVA).length > 0 ? (
+      {reservations.filter((res) => res.status === statusType.EM_RESERVA)
+        .length > 0 ? (
         <ul className="text-left">
           {reservations
             .filter((res) => res.status === statusType.EM_RESERVA)
             .map((res, index) => (
               <li
                 key={index}
-                className="mb-2 bg-gray-200 rounded-[10px] shadow-md shadow-[#00000020] px-3 py-4 grid grid-cols-2"
+                className="mb-2 bg-gray-200 gap-2 rounded-[10px] shadow-md shadow-[#00000020] px-3 py-4 grid grid-cols-2"
               >
-                <h6><span className="text-base font-semibold">Usuário:</span> {res?.user?.name}</h6>
-                <h6><span className="text-base font-semibold">Tipo:</span> {getReservationType(res?.type)}</h6>
+                <h6>
+                  <span className="text-base font-semibold">Usuário:</span>{" "}
+                  {res?.user?.name}
+                </h6>
+                <h6>
+                  <span className="text-base font-semibold">Tipo:</span>{" "}
+                  {getReservationType(res?.type)}
+                </h6>
 
-                <h6><span className="text-base font-semibold">Início:</span> {res?.startTime}</h6>
-                <h6><span className="text-base font-semibold">Fim:</span> {res?.endTime}</h6>
+                <h6>
+                  <span className="text-base font-semibold">Início:</span>{" "}
+                  {res?.startTime}
+                </h6>
+                <h6>
+                  <span className="text-base font-semibold">Fim:</span>{" "}
+                  {res?.endTime}
+                </h6>
 
                 {res?.materials.length > 0 && (
-                  <div>
+                  <div className="col-span-2">
                     <span className="text-base font-semibold">Materiais:</span>
-                    {res?.materials?.map((material) => material.title)}
+                    <div className="flex flex-wrap gap-2 items-end justify-start -mt-2">
+                      {res?.materials?.map((material) => (
+                        <p>
+                          {/* @ts-ignore */}
+                          {material?.material?.title},
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 )}
-                <h6><span className="text-base font-semibold">Tipo:</span> {getReservationType(res?.type)}</h6>
+                <h6>
+                  <span className="text-base font-semibold">Tipo:</span>{" "}
+                  {getReservationType(res?.type)}
+                </h6>
 
-                <p className="col-span-2"><span className="text-base font-semibold">Propósito:</span> {res?.purpose}</p>
+                <p className="col-span-2">
+                  <span className="text-base font-semibold">Propósito:</span>{" "}
+                  {res?.purpose}
+                </p>
               </li>
             ))}
         </ul>
