@@ -104,7 +104,7 @@ export const Equipments = () => {
                 Disponibilidade:
                   material.quantity > 0 ? "Disponível" : "Indisponível",
                 Importancia: (
-                  <p className="bg-gray-200 border border-primary w-fit px-1.5 py-0.5 rounded-2xl">
+                  <p className="bg-gray-200 border border-primary w-fit px-1.5 py-0.5 h-fit rounded-2xl">
                     {getMaterialType(String(material.type) as MaterialType)}
                   </p>
                 ),
