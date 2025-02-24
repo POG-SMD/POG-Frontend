@@ -10,6 +10,8 @@ import {
 import { cn } from "@/libs";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button } from "../ui/Button";
+import { RoleType } from "@/types/roleType";
+import { useAuth } from "@/contexts";
 
 export type DynamicTable = {
   cols: {
@@ -35,6 +37,7 @@ export const DynamicTable = ({
   title,
   setOpenCreate,
 }: DynamicTable) => {
+  const { user } = useAuth()
   return (
     <Table
       className={cn(
@@ -45,9 +48,9 @@ export const DynamicTable = ({
       <TableHeader className="block w-full bg-[#EEF1F4A6] border-y border-[#BDC6D4]">
         <div className="flex justify-between items-center px-3">
           <h2 className="text-2xl my-2 font-bold">{title}</h2>
-          <Button onClick={() => setOpenCreate && setOpenCreate(true)}>
+          {(user?.role === RoleType.ADMIN) &&<Button onClick={() => setOpenCreate && setOpenCreate(true)}>
             <Icon fontSize={20} icon='tabler:plus'/>
-          </Button>
+          </Button>}
         </div>
         <TableRow className="flex px-3 h-fit py-1">
           {cols.map((col, index) => (

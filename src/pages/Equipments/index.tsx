@@ -22,9 +22,12 @@ import {
 } from "@/components";
 import { toast } from "sonner";
 import { ReservationType } from "@/types/reservationType";
+import { useAuth } from "@/contexts";
+import { RoleType } from "@/types/roleType";
 
 export const Equipments = () => {
   const { setHead } = useOutletContext<mainLayoutContext>();
+  const { user } = useAuth();
   const getMaterials = useGetMaterials();
   const deleteMaterial = useDeleteMaterial();
   const getMaterialOptions = useGetMaterialOptions();
@@ -47,7 +50,7 @@ export const Equipments = () => {
         open={openDelete}
         setOpen={setOpenDelete}
         title="Deletar"
-        description='Você realmente deseja deletar esse material?'
+        description="Você realmente deseja deletar esse material?"
         loading={deleteMaterial.loading}
         deleteClick={() => {
           deleteMaterial
@@ -106,30 +109,38 @@ export const Equipments = () => {
                   </p>
                 ),
                 "": (
-                  <Popover>
-                    <PopoverTrigger
-                      className="h-6 ml-auto cursor-pointer text-primary/70"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Icon icon="tabler:dots" className="h-5" fontSize={20} />
-                    </PopoverTrigger>
+                  <>
+                    {user?.role === RoleType.ADMIN && (
+                      <Popover>
+                        <PopoverTrigger
+                          className="h-6 ml-auto cursor-pointer text-primary/70"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Icon
+                            icon="tabler:dots"
+                            className="h-5"
+                            fontSize={20}
+                          />
+                        </PopoverTrigger>
 
-                    <PopoverContent
-                      className="w-fit"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Button
-                        onClick={() => {
-                          setDeleteId(material.id);
-                          setOpenDelete(true);
-                        }}
-                        variant="destructive"
-                        className="w-full px-10"
-                      >
-                        Remover
-                      </Button>
-                    </PopoverContent>
-                  </Popover>
+                        <PopoverContent
+                          className="w-fit"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Button
+                            onClick={() => {
+                              setDeleteId(material.id);
+                              setOpenDelete(true);
+                            }}
+                            variant="destructive"
+                            className="w-full px-10"
+                          >
+                            Remover
+                          </Button>
+                        </PopoverContent>
+                      </Popover>
+                    )}
+                  </>
                 ),
               },
               onClick: () => {

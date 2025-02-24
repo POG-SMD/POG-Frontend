@@ -611,21 +611,21 @@ Certifique-se de ter o Node.js e npm ou Yarn instalados.
   <td>Req.F. 12.2</td>
   <td>Front-end</td>
   <td>Implementar a integração do modal de reserva de espaços existentes de forma 100% funcional.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 <tr>
   <td>Implementar endpoints para reserva de espaços existentes</td>
   <td>Req.NF. 12.1</td>
   <td>Back-end</td>
   <td>Implementar endpoints para reserva de espaços existentes, permitindo a funcionalidade do front-end.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 <tr>
   <td>Implementar validação de chaves retornadas pelo frontend</td>
   <td>Req.NF. 12.2</td>
   <td>Back-end</td>
   <td>Implementar validação de chaves retornadas pelo frontend, para que, caso o tipo seja diferente do esperado pelo backend, seja retornado um erro.</td>
-  <td align=center>❌</td>
+  <td align=center>✅</td>
 </tr>
 
 <tr></tr>
