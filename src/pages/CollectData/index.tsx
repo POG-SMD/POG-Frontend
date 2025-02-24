@@ -31,7 +31,7 @@ export const CollectData = () => {
             date={date}
             className="my-auto"
             successMessage="Sucesso ao reservar espaço"
-            header={<p className="">Espaço para reuniões da célula</p>}
+            header={<p className="">Coleta de dados</p>}
             optionList={getMaterialOptions?.data || []}
             type={ReservationType.DATA_COLLECT}
           />

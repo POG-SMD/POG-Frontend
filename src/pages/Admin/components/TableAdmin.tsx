@@ -91,13 +91,13 @@ export const TableAdmin = ({
           <Icon
             icon="lucide:plus"
             onClick={() => setOpenCreate && setOpenCreate(true)}
-            className="absolute right-2.5 hover:text-primary/60 cursor-pointer duration-150 top-2.5 z-50"
+            className="absolute right-2.5 hover:text-white/90 text-white cursor-pointer duration-150 top-2.5 z-50"
             fontSize={20}
           />
         )}
-        <TableHeader>
+        <TableHeader className="bg-base_primary">
           <TableRow>
-            <TableHead className="w-[100px] text-xl">{title}</TableHead>
+            <TableHead className="w-[100px] text-xl font-bold text-white">{title}</TableHead>
           </TableRow>
         </TableHeader>
 
@@ -105,7 +105,7 @@ export const TableAdmin = ({
           {data?.map((item: any) => (
             <TableRow
               key={item?.id}
-              className="cursor-pointer hover:bg-gray-100 duration-150 flex"
+              className="cursor-pointer hover:bg-gray-100 bg-base_primary-100 m-2 rounded-md duration-150 flex"
               onClick={() => {
                 setId(item?.id);
                 setOpen(true);
@@ -134,10 +134,10 @@ export const TableAdmin = ({
               <TableCell className="w-fit ml-auto">
                 <Popover>
                   <PopoverTrigger
-                    className="h-6 cursor-pointer text-primary/70"
+                    className="h-6 cursor-pointer px-1 rounded-md flex justify-center items-center bg-base_secondary"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <Icon icon="tabler:dots" className="h-5" fontSize={20} />
+                    <Icon icon="tabler:dots" className="h-5 text-base_secondary-100" fontSize={20} />
                   </PopoverTrigger>
 
                   <PopoverContent

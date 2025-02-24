@@ -80,7 +80,7 @@ export const Equipments = () => {
           getMaterialOptions.makeRequest();
         }}
       />
-      <section className="flex flex-col lg:grid grid-cols-10 gap-10 px-5 lg:px-10 mb-10">
+      <section className="flex flex-col lg:grid grid-cols-10 gap-10 px-5 lg:px-10">
         <ReservationForm
           className="my-auto col-span-4 2xl:col-span-3"
           successMessage="Sucesso ao reservar materiais"
@@ -113,12 +113,12 @@ export const Equipments = () => {
                     {user?.role === RoleType.ADMIN && (
                       <Popover>
                         <PopoverTrigger
-                          className="h-6 ml-auto cursor-pointer text-primary/70"
+                          className="h-6 ml-auto cursor-pointer px-1 rounded-md flex justify-center items-center bg-base_secondary"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <Icon
                             icon="tabler:dots"
-                            className="h-5"
+                            className="h-5 text-base_secondary-100"
                             fontSize={20}
                           />
                         </PopoverTrigger>

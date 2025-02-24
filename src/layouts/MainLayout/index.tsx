@@ -16,39 +16,45 @@ export type mainLayoutContext = {
 
 export const MainLayout = () => {
   const [head, setHead] = useState<HeadingProps>({ title: undefined });
-  const { user, setClose, close } = useAuth()
+  const { user, setClose, close } = useAuth();
   const getStatus = useGetStatus();
 
   useEffect(() => {
-    getStatus.makeRequest({ id: user?.id })
+    getStatus.makeRequest({ id: user?.id });
   }, []);
 
   useEffect(() => {
     if (!user?.id) return;
-  
+
     const fetchStatus = () => {
       getStatus.makeRequest({ id: user.id }).then((response) => {
-        
         if ([3, 4, 5].includes(response?.data?.data?.status)) {
           clearInterval(interval);
         }
       });
     };
-  
+
     const interval = setInterval(fetchStatus, 5000);
-  
+
     return () => clearInterval(interval);
   }, [user?.id]);
-  
+
   return (
-    <div className="font-sans min-h-screen flex justify-center flex-col bg-slate-500">
+    <div className="font-sans min-h-screen flex justify-center flex-col  bg-[url(/images/background.svg)]">
       <Navbar />
-      <h1 className="w-full text-3xl text-center sm:text-4xl font-semibold my-10 mt-32">
+      <h1 className="w-full text-3xl text-base_primary font-bold text-center sm:text-4xl my-10 mt-32">
         {head.title ?? ""}
       </h1>
-      <main className="mb-auto mt-10 2xl:mt-10">
+      <main className="mb-10 mt-10 2xl:mt-10">
         <Outlet context={{ setHead }} />
-        {([statusType.PENDENTE, statusType.EM_RESERVA, statusType.RECUSADO].includes(getStatus?.data?.status) && !close) && <ReservationStatus setClose={setClose} data={getStatus?.data} />}
+        {[
+          statusType.PENDENTE,
+          statusType.EM_RESERVA,
+          statusType.RECUSADO,
+        ].includes(getStatus?.data?.status) &&
+          !close && (
+            <ReservationStatus setClose={setClose} data={getStatus?.data} />
+          )}
       </main>
     </div>
   );

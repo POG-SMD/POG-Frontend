@@ -7,10 +7,9 @@ import { toast } from "sonner";
 import { t } from "i18next";
 
 export const Login = () => {
-  
-  const { setToken, setUser } = useAuth()
-  const signIn = useSignIn()
-  const navigate = useNavigate()
+  const { setToken, setUser } = useAuth();
+  const signIn = useSignIn();
+  const navigate = useNavigate();
 
   const form = useFormSignIn({
     onSubmit: () => {
@@ -18,28 +17,35 @@ export const Login = () => {
         .makeRequest({
           ...form.values,
         })
-        .then(res => {
-          const responseData = res.data
-          
+        .then((res) => {
+          const responseData = res.data;
+
           // @ts-ignore
-          setToken(responseData.token)
+          setToken(responseData.token);
           // @ts-ignore
-          setUser(responseData.data)
+          setUser(responseData.data);
 
           localStorage.setItem("auth:user", JSON.stringify(responseData.data));
 
-          navigate('/home')
-          toast.success(t('signIn.toast.success'))
+          navigate("/home");
+          toast.success(t("signIn.toast.success"));
         })
         .catch(() => {
-          toast.error(t('signIn.toast.error'))
-        })
+          toast.error(t("signIn.toast.error"));
+        });
     },
-  })
+  });
 
   return (
-    <form onSubmit={form.handleSubmit} className="flex flex-col gap-10 w-full sm:px-0 px-10 sm:w-96 m-auto">
-      <h1 className="text-3xl">LOGO</h1>
+    <form
+      onSubmit={form.handleSubmit}
+      className="flex flex-col gap-10 w-full sm:px-2 px-10 sm:w-96 m-auto"
+    >
+      <img
+        src="images\logo.svg"
+        alt="celula eucariota"
+        className="w-16 h-16 mx-auto"
+      />
       <TextField
         name="email"
         label="E-mail"
@@ -64,11 +70,7 @@ export const Login = () => {
       >
         Esqueci a senha
       </Link>
-      <Button
-        className="mt-6"
-        type="submit"
-        disabled={signIn.loading}
-      >
+      <Button className="mt-6" type="submit" disabled={signIn.loading}>
         Entrar
       </Button>
     </form>

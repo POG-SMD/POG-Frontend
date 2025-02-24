@@ -71,7 +71,7 @@ export const VizualizeCalendar = ({
         <Calendar
           onSelect={handleSelect}
           bordered
-          className="bg-secondary border-2 border-primary rounded-md w-full"
+          className="rounded-md bg-base_primary-100 w-full shadow-lg shadow-[#00000060]"
           renderCell={renderCell}
         />
       </div>
@@ -88,17 +88,17 @@ const DayDetails = ({
   reservations: ReservationResponseProps[];
 }) => {
   return (
-    <div className="w-full h-full bg-secondary border-2 rounded-md py-1 px-6 border-primary text-center overflow-auto">
+    <div className="flex flex-col gap-10 py-10 bg-secondary h-full shadow-lg shadow-[#00000060] rounded-md px-6 text-center overflow-auto">
       <h3 className="text-lg font-bold mb-2">Reservas em {formatDate(date)}</h3>
       {reservations.filter((res) => res.status === statusType.EM_RESERVA)
         .length > 0 ? (
-        <ul className="text-left">
+        <ul className="text-left overflow-y-auto">
           {reservations
             .filter((res) => res.status === statusType.EM_RESERVA)
             .map((res, index) => (
               <li
                 key={index}
-                className="mb-2 bg-gray-200 gap-2 rounded-[10px] shadow-md shadow-[#00000020] px-3 py-4 grid grid-cols-2"
+                className="mb-2 bg-base_primary-100 gap-2 rounded-[10px] shadow-md shadow-[#00000020] px-3 py-4 grid grid-cols-2"
               >
                 <h6>
                   <span className="text-base font-semibold">Usuário:</span>{" "}
@@ -153,30 +153,30 @@ const DayDetails = ({
 };
 
 const WelcomeMessage = () => (
-  <div className="flex flex-col gap-10 py-10 bg-secondary h-full border-2 rounded-md px-6 border-primary text-center overflow-auto">
-    <h2 className="text-3xl text-center font-bold">Bem-vindo ao Hermes!</h2>
-    <p className="text-2xl text-center px-10 font-semibold">Aqui você pode:</p>
+  <div className="flex flex-col gap-10 py-10 bg-secondary h-full shadow-lg shadow-[#00000060] rounded-md px-6 text-center overflow-auto">
+    <h2 className="text-3xl text-center font-bold text-base_primary">Bem-vindo ao Hermes!</h2>
+    <p className="text-2xl text-center px-10 font-semibold text-base_primary">Aqui você consegue:</p>
     <ul className="flex flex-col gap-10 px-2">
       <li className="flex items-center gap-5">
-        <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
+        <div className="h-16 min-w-16 bg-base_secondary-200 text-base_secondary rounded-full p-1 flex justify-center items-center">
           <Icon
-            fontSize={48}
+            fontSize={36}
             icon="streamline:dices-entertainment-gaming-dices"
           />
         </div>
-        <p className="font-medium text-xl text-start">Agendar os espaços</p>
+        <p className="font-medium text-lg text-start text-gray-800">Agendar os espaços na aba de reservas </p>
       </li>
       <li className="flex items-center gap-5">
-        <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
-          <Icon fontSize={48} icon="grommet-icons:cubes" />
+        <div className="h-16 min-w-16 bg-base_secondary-200 text-base_secondary rounded-full p-1 flex justify-center items-center">
+          <Icon fontSize={36} icon="grommet-icons:cubes" />
         </div>
-        <p className="font-medium text-xl text-start">Solicitar equipamentos</p>
+        <p className="font-medium text-lg text-start text-gray-800">Solicitar equipamentos na aba de equipamenos</p>
       </li>
       <li className="flex items-center gap-5">
-        <div className="bg-blue-50 border h-20 w-20 border-primary rounded-full p-1 flex justify-center items-center">
-          <Icon fontSize={48} icon="mdi:link-variant" />
+        <div className="h-16 min-w-16 bg-base_secondary-200 text-base_secondary rounded-full p-1 flex justify-center items-center">
+          <Icon fontSize={36} icon="mdi:link-variant" />
         </div>
-        <p className="font-medium text-xl text-start">Manejar links</p>
+        <p className="font-medium text-lg text-start text-gray-800">Manejar links e aviso na aba de materiais e avisos</p>
       </li>
     </ul>
   </div>

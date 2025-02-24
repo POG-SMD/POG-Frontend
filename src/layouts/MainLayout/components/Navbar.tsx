@@ -24,7 +24,7 @@ export const Navbar = () => {
   const { setToken, user } = useAuth();
 
   return (
-    <header className="bg-secondary shadow-sm shadow-[#00000060] w-full fixed top-0 z-[100]">
+    <header className="bg-base_primary-100 shadow-sm shadow-[#00000060] w-full fixed top-0 z-[100]">
       <nav className="w-full px-10 flex h-20">
         <ul className="flex items-center w-full">
           <img
@@ -55,9 +55,9 @@ export const Navbar = () => {
                         <details className="w-full">
                           <summary
                             className={cn(
-                              "cursor-pointer border-b border-gray-400 h-10 flex items-center px-10 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100",
+                              "cursor-pointer border-b border-gray-400 h-10 flex items-center px-10 min-w-10 text-lg text-gray-600 hover:text-gray-600 hover:bg-base_secondary/40 duration-100",
                               {
-                                "bg-gray-600 text-secondary":
+                                "bg-base_secondary/90 text-secondary":
                                   item.dropdown.some(
                                     (drop) =>
                                       drop.link &&
@@ -73,7 +73,7 @@ export const Navbar = () => {
                               drop.link ? (
                                 <li key={drop.link}>
                                   <Link
-                                    className="block py-2 pl-5 text-gray-600 hover:text-gray-900 hover:bg-gray-300 rounded-md"
+                                    className="block py-2 pl-5 text-gray-600 hover:text-gray-600 hover:bg-gray-300 rounded-md"
                                     to={drop.link}
                                   >
                                     {drop.name}
@@ -97,9 +97,9 @@ export const Navbar = () => {
                       ) : (
                         <Link
                           className={cn(
-                            "h-10 flex items-center px-10 min-w-10 border-b border-gray-400 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100",
+                            "h-10 flex items-center px-10 min-w-10 border-b border-gray-400 text-lg text-gray-600 hover:text-gray-600 hover:bg-base_secondary/40 duration-100",
                             {
-                              "bg-gray-600 text-secondary":
+                              "bg-base_secondary/90 text-secondary":
                                 location.pathname.includes(item.link),
 
                               hidden:
@@ -115,7 +115,7 @@ export const Navbar = () => {
                     </li>
                   ))}
                   <li
-                    className="h-10 flex items-center px-10 min-w-10 border-b border-gray-400 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100"
+                    className="h-10 flex items-center px-10 min-w-10 border-b border-gray-400 text-lg text-gray-600 hover:text-gray-600 hover:bg-base_secondary/40 duration-100"
                     onClick={() => setToken(null)}
                   >
                     Sair
@@ -131,9 +131,9 @@ export const Navbar = () => {
                   <DropdownMenuTrigger asChild>
                     <button
                       className={cn(
-                        "no-underline border-l-2 h-full flex items-center px-5 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100",
+                        "no-underline border-l-2 h-full flex items-center px-5 min-w-10 text-lg text-gray-600 hover:text-gray-600 hover:bg-base_secondary/40 duration-100",
                         {
-                          "bg-gray-600 text-secondary": item.dropdown.some(
+                          "bg-base_secondary/90 text-secondary": item.dropdown.some(
                             (drop) =>
                               drop.link && location.pathname.includes(drop.link)
                           ),
@@ -169,9 +169,9 @@ export const Navbar = () => {
               ) : (
                 <Link
                   className={cn(
-                    "border-l-2 h-full flex items-center px-10 min-w-10 text-lg text-gray-600 hover:text-gray-900 hover:bg-gray-400 duration-100",
+                    "border-l-2 h-full flex items-center px-10 min-w-10 text-lg text-gray-600 hover:text-gray-600 hover:bg-base_secondary/40 duration-100",
                     {
-                      "bg-gray-600 text-secondary": location.pathname.includes(
+                      "bg-base_secondary/90 text-secondary": location.pathname.includes(
                         item.link
                       ),
                       hidden:
@@ -187,7 +187,7 @@ export const Navbar = () => {
             </div>
           ))}
           <li
-            className="border-l-2 h-full ml-auto hidden lg:flex items-center w-32 text-lg text-gray-600 hover:text-gray-900 bg-gray-200 hover:bg-gray-300 duration-100"
+            className="border-l-2 h-full ml-auto hidden lg:flex items-center w-32 text-lg text-white hover:text-gray-100 bg-base_secondary/60 hover:bg-base_secondary/90 duration-100"
             onClick={() => setToken(null)}
           >
             <p className="mx-auto">Sair</p>

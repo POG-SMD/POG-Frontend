@@ -12,6 +12,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { Button } from "../ui/Button";
 import { RoleType } from "@/types/roleType";
 import { useAuth } from "@/contexts";
+import { Loading } from "./Loading";
 
 export type DynamicTable = {
   cols: {
@@ -26,7 +27,7 @@ export type DynamicTable = {
     className?: string;
   }>;
   loading?: boolean;
-  setOpenCreate?: Dispatch<SetStateAction<boolean>>,
+  setOpenCreate?: Dispatch<SetStateAction<boolean>>;
 };
 
 export const DynamicTable = ({
@@ -37,20 +38,27 @@ export const DynamicTable = ({
   title,
   setOpenCreate,
 }: DynamicTable) => {
-  const { user } = useAuth()
+  const { user } = useAuth();
   return (
     <Table
       className={cn(
-        "bg-slate-100 w-full rounded-lg overflow-hidden max-h-screen flex flex-col justify-start",
+        "bg-white w-full rounded-lg overflow-hidden max-h-screen flex flex-col justify-start",
         className
       )}
     >
-      <TableHeader className="block w-full bg-[#EEF1F4A6] border-y border-[#BDC6D4]">
+      <TableHeader className="block w-full py-3">
         <div className="flex justify-between items-center px-3">
-          <h2 className="text-2xl my-2 font-bold">{title}</h2>
-          {(user?.role === RoleType.ADMIN) &&<Button onClick={() => setOpenCreate && setOpenCreate(true)}>
-            <Icon fontSize={20} icon='tabler:plus'/>
-          </Button>}
+          <h2 className="text-3xl my-2 font-extrabold text-gray-600">
+            {title}
+          </h2>
+          {user?.role === RoleType.ADMIN && (
+            <Button
+              className="cursor-pointer hover:bg-base_secondary/90 duration-200 rounded-md flex justify-center items-center bg-base_secondary"
+              onClick={() => setOpenCreate && setOpenCreate(true)}
+            >
+              <Icon fontSize={20} icon="tabler:plus" />
+            </Button>
+          )}
         </div>
         <TableRow className="flex px-3 h-fit py-1">
           {cols.map((col, index) => (
@@ -58,7 +66,7 @@ export const DynamicTable = ({
               key={index}
               className={
                 (cn(
-                  "h-9 content-center text-textGray font-semibold text-start w-full sm:text-base text-xs",
+                  "h-9 content-center text-gray-600 font-bold text-start w-full sm:text-base text-xs",
                   index === cols.length - 1 && "text-start"
                 ),
                 col.className)
@@ -73,11 +81,10 @@ export const DynamicTable = ({
       <TableBody className="overflow-auto max-h-full">
         {loading ? (
           <div className="flex items-center justify-center w-full">
-            {/* <Loading size='xl' /> */}
+            <Loading size="xl" />
           </div>
         ) : (
           <>
-            {/* {(!data || data.length === 0) && <EmptyTable />} */}
             {data &&
               data.map((item, ind) => (
                 <TableRow
@@ -86,6 +93,9 @@ export const DynamicTable = ({
                   className={cn(
                     "flex w-full px-3",
                     item.onClick && "cursor-pointer",
+                    ind % 2 === 0
+                      ? "bg-base_primary-200"
+                      : "bg-base_primary-100",
                     item.className
                   )}
                 >

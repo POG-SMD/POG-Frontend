@@ -31,7 +31,7 @@ export const Reunion = () => {
             date={date}
             className="my-auto"
             successMessage="Sucesso ao reservar espaço"
-            header={<p className="">Espaço para reuniões da célula</p>}
+            header={<p className="">Reuniões</p>}
             optionList={getMaterialOptions?.data || []}
             type={ReservationType.REUNION}
           />

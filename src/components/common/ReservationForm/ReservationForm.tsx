@@ -80,11 +80,11 @@ export const ReservationForm = ({
     <form
       onSubmit={form.handleSubmit}
       className={cn(
-        "w-full mx-auto h-full lg:col-span-4 2xl:col-span-3 bg-secondary border-2 rounded-md py-3 px-6 border-primary overflow-auto",
+        "w-full mx-auto h-full lg:col-span-4 2xl:col-span-3 bg-secondary shadow-lg shadow-[#00000060] rounded-md py-3 px-6 overflow-auto",
         className
       )}
     >
-      <header className="h-14 bg-slate-100 mb-5 flex justify-center items-center rounded-md">
+      <header className="h-14 font-extrabold text-base_primary text-3xl mb-5 flex justify-center items-center rounded-md">
         {header}
       </header>
 
@@ -138,7 +138,7 @@ export const ReservationForm = ({
               return selectedMaterial ? (
                 <span
                   key={material}
-                  className="flex items-center gap-1 px-2 py-1 bg-gray-200 rounded-lg text-sm"
+                  className="flex items-center gap-1 px-2 py-1 bg-base_primary-100 rounded-lg text-sm"
                 >
                   {selectedMaterial.label}
                   <button
@@ -223,7 +223,7 @@ export const ReservationForm = ({
         <Button
           type="submit"
           disabled={createReservation.loading}
-          className="px-10 py-6 w-fit mx-auto mt-24"
+          className="px-10 py-6 w-fit mx-auto mt-24 bg-base_secondary"
         >
           Solicitar Reserva
         </Button>
