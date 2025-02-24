@@ -28,10 +28,10 @@ export const DeleteModal = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
-          <DialogDescription>{description}</DialogDescription>
+          <DialogDescription className="text-center"><div className="my-10">{description}</div></DialogDescription>
 
-          <div>
-            <Button disabled={loading} onClick={() => setOpen(false)}>Voltar</Button>
+          <div className="flex ml-auto gap-5">
+            <Button disabled={loading} variant='outline' onClick={() => setOpen(false)}>Voltar</Button>
             <Button disabled={loading} onClick={deleteClick} variant='destructive'>Remover</Button>
           </div>
         </DialogHeader>

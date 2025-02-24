@@ -47,7 +47,7 @@ export const Equipments = () => {
         open={openDelete}
         setOpen={setOpenDelete}
         title="Deletar"
-        description="asdsadasdasd"
+        description='Você realmente deseja deletar esse material?'
         loading={deleteMaterial.loading}
         deleteClick={() => {
           deleteMaterial

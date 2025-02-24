@@ -60,7 +60,7 @@ export const TableAdmin = ({
         open={openDelete}
         setOpen={setOpenDelete}
         title="Deletar"
-        description="asdsadasdasd"
+        description={`Você realmente deseja deletar ${reservation ? 'essa reserva' : 'esse usuário'}?`}
         loading={deleteUser.loading}
         deleteClick={() => {
           deleteRequest
@@ -111,16 +111,16 @@ export const TableAdmin = ({
                 setOpen(true);
               }}
             >
-              <TableCell className="font-medium">
+              <TableCell className="font-medium w-full">
                 {item?.name || item?.user?.name}
               </TableCell>
               {item?.type && (
-                <TableCell className="mx-auto font-medium">
+                <TableCell className="mx-auto font-medium w-full">
                   {getReservationType(item?.type as ReservationType)}
                 </TableCell>
               )}
               {item?.status && (
-                <TableCell className="mx-auto font-medium">
+                <TableCell className="mx-auto w-full font-medium">
                   <span
                     className={cn(
                       "h-fit px-2 py-1 rounded-xl shadow-sm shadow-[#00000030]",
