@@ -15,7 +15,7 @@ export const ReservationStatus = ({
   const cancelReservation = useCancelReservation();
   const returnReservation = useReturnReservation();
   return (
-    <div className="fixed left-1/2 sm:translate-x-0 -translate-x-1/4 max-w-64 sm:max-w-fit items-center w-full bottom-10 sm:left-10 bg-white p-5 rounded-[10px] shadow-md shadow-[#00000060] flex sm:flex-row flex-col justify-center gap-2">
+    <div className="z-[1000] fixed left-1/2 sm:translate-x-0 -translate-x-1/4 max-w-64 sm:max-w-fit items-center w-full bottom-10 sm:left-10 bg-white p-5 rounded-[10px] shadow-md shadow-[#00000060] flex sm:flex-row flex-col justify-center gap-2">
       <p className="flex gap-2 justify-center items-center">
         Status da reserva:
         <span

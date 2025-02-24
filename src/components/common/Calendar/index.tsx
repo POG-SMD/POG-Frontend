@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import { ReservationResponseProps } from "../ReservationForm/hook/useApi";
 import { statusType } from "@/types/statusType";
 import { formatDate } from "@/pages/Admin/components/ReservationDetails";
+import { getReservationType } from "@/types/reservationType";
 
 interface CalendarProps {
   reservations?: ReservationResponseProps[];
@@ -34,12 +35,13 @@ export const VizualizeCalendar = ({
   const renderCell = (date: Date) => {
     const formattedDate = date.toISOString().split("T")[0];
     const hasReservations = reservations.some(
-      (res) => res.dateStart === formattedDate && res.status === statusType.EM_RESERVA
+      (res) =>
+        res.dateStart === formattedDate && res.status === statusType.EM_RESERVA
     );
 
     return hasReservations ? (
       <div className="relative">
-        <span className="absolute -top-3.5 left-2/3 w-2 h-2 bg-red-500 rounded-full" />
+        <span className="absolute -top-3.5 left-2/3 w-2 h-2 bg-blue-500 rounded-full" />
       </div>
     ) : null;
   };
@@ -51,14 +53,21 @@ export const VizualizeCalendar = ({
       {hasDetails && (
         <div className="mx-auto w-full lg:col-span-4 2xl:col-span-3">
           {selectedDate ? (
-            <DayDetails date={selectedDate} reservations={getReservationsByDate(selectedDate)} />
+            <DayDetails
+              date={selectedDate}
+              reservations={getReservationsByDate(selectedDate)}
+            />
           ) : (
             <WelcomeMessage />
           )}
         </div>
       )}
       <span className="col-span-1" />
-      <div className={cn("lg:col-span-7 xl:col-span-7 2xl:col-span-6 h-fit", { "w-full": !hasDetails })}>
+      <div
+        className={cn("lg:col-span-7 xl:col-span-7 2xl:col-span-6 h-fit", {
+          "w-full": !hasDetails,
+        })}
+      >
         <Calendar
           onSelect={handleSelect}
           bordered
@@ -81,16 +90,30 @@ const DayDetails = ({
   return (
     <div className="w-full h-full bg-secondary border-2 rounded-md py-1 px-6 border-primary text-center overflow-auto">
       <h3 className="text-lg font-bold mb-2">Reservas em {formatDate(date)}</h3>
-      {reservations.length > 0 ? (
+      {reservations.filter((res) => res.status === statusType.EM_RESERVA).length > 0 ? (
         <ul className="text-left">
           {reservations
             .filter((res) => res.status === statusType.EM_RESERVA)
             .map((res, index) => (
-              <li key={index} className="mb-2">
-                <strong>
-                  {res.startTime} - {res.endTime}:
-                </strong>
-                {res.purpose} ({res.user.name}) {res.dateStart} {res.status}
+              <li
+                key={index}
+                className="mb-2 bg-gray-200 rounded-[10px] shadow-md shadow-[#00000020] px-3 py-4 grid grid-cols-2"
+              >
+                <h6><span className="text-base font-semibold">Usuário:</span> {res?.user?.name}</h6>
+                <h6><span className="text-base font-semibold">Tipo:</span> {getReservationType(res?.type)}</h6>
+
+                <h6><span className="text-base font-semibold">Início:</span> {res?.startTime}</h6>
+                <h6><span className="text-base font-semibold">Fim:</span> {res?.endTime}</h6>
+
+                {res?.materials.length > 0 && (
+                  <div>
+                    <span className="text-base font-semibold">Materiais:</span>
+                    {res?.materials?.map((material) => material.title)}
+                  </div>
+                )}
+                <h6><span className="text-base font-semibold">Tipo:</span> {getReservationType(res?.type)}</h6>
+
+                <p className="col-span-2"><span className="text-base font-semibold">Propósito:</span> {res?.purpose}</p>
               </li>
             ))}
         </ul>
@@ -105,7 +128,7 @@ const DayDetails = ({
 
 const WelcomeMessage = () => (
   <div className="flex flex-col gap-10 py-10 bg-secondary h-full border-2 rounded-md px-6 border-primary text-center overflow-auto">
-    <h2 className="text-3xl text-center font-bold">Bem-vindo à Celulose!</h2>
+    <h2 className="text-3xl text-center font-bold">Bem-vindo ao Hermes!</h2>
     <p className="text-2xl text-center px-10 font-semibold">Aqui você pode:</p>
     <ul className="flex flex-col gap-10 px-2">
       <li className="flex items-center gap-5">
